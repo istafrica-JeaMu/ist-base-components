@@ -27,30 +27,53 @@
 />
 -->
 <template>
-  <Accordion :pt="passThrough" :lazy="true">
+  <Accordion 
+    :pt="passThrough" 
+    :lazy="true"
+    data-testid="base-accordion"
+    role="region"
+    :aria-label="`${title} accordion`"
+  >
     <AccordionTab :pt="passThroughTab">
       <template #header>
         <slot name="header" :title="title" :active="false">
           <!-- Default header, styleable via props -->
-          <div :class="headerClass">
+          <div 
+            :class="headerClass"
+            role="button"
+            :aria-label="`Toggle ${title} section`"
+            tabindex="0"
+            data-testid="accordion-header"
+          >
             <span :class="titleClass">{{ title }}</span>
             <i
               class="pi pi-chevron-down transition-transform duration-200"
               :class="iconClass"
+              aria-hidden="true"
             />
           </div>
         </slot>
       </template>
-      <ul class="space-y-3">
-        <li v-for="(item, index) in items" :key="index">
+      <ul 
+        class="space-y-3"
+        role="list"
+        :aria-label="`${title} items`"
+      >
+        <li 
+          v-for="(item, index) in items" 
+          :key="index"
+          role="listitem"
+        >
           <slot name="item" :item="item">
             <a
               :href="item.path"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-2.5 text-sm text-dark/80 hover:text-primary transition-colors duration-200"
+              class="flex items-center gap-2.5 text-sm text-dark/80 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              :aria-label="`Open ${item.label} in new tab`"
+              :data-testid="`accordion-item-${index}`"
             >
-              <i class="pi pi-external-link text-xs text-muted" />
+              <i class="pi pi-external-link text-xs text-muted" aria-hidden="true" />
               <span>{{ item.label }}</span>
             </a>
           </slot>

@@ -27,6 +27,9 @@
       'w-[64px]': isCollapsed,
       'fixed z-50': isMobile
     }"
+    role="navigation"
+    aria-label="Main navigation"
+    data-testid="base-side-menu"
   >
     <!-- Logo Section -->
     <div class="h-16 px-4 shadow-sm flex items-center justify-between relative">
@@ -46,9 +49,12 @@
 
       <!-- Toggle Button -->
       <button
-        class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-border rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200 hover:bg-accent/5 hover:border-accent/20 group"
+        class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-border rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200 hover:bg-accent/5 hover:border-accent/20 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         @click="toggleCollapse"
         :title="isCollapsed ? 'Expand menu' : 'Collapse menu'"
+        :aria-label="isCollapsed ? 'Expand menu' : 'Collapse menu'"
+        :aria-expanded="!isCollapsed"
+        data-testid="menu-toggle-button"
       >
         <i
           class="pi text-dark/60 text-xs transition-transform duration-200 group-hover:text-dark"
@@ -58,8 +64,15 @@
     </div>
 
     <!-- Navigation Menu -->
-    <nav class="flex-1 overflow-y-auto py-2 px-2">
-      <ul class="space-y-0.5">
+    <nav 
+      class="flex-1 overflow-y-auto py-2 px-2"
+      aria-label="Navigation menu items"
+    >
+      <ul 
+        class="space-y-0.5"
+        role="menu"
+        data-testid="navigation-menu"
+      >
         <SideMenuItem
           v-for="item in menuItems"
           :key="item.id"

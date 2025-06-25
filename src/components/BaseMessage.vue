@@ -22,13 +22,33 @@
 </BaseMessage>
 -->
 <template>
-  <Message :severity="severity" :closable="closable" :pt="passThrough" @close="$emit('close', $event)">
+  <Message 
+    :severity="severity" 
+    :closable="closable" 
+    :pt="passThrough" 
+    role="alert"
+    :aria-label="`${severity} message: ${title}`"
+    data-testid="base-message"
+    @close="$emit('close', $event)"
+  >
     <template #messageicon>
-      <i :class="[iconClass, severityClasses.icon, 'text-[23px]']"></i>
+      <i 
+        :class="[iconClass, severityClasses.icon, 'text-[23px]']"
+        aria-hidden="true"
+      ></i>
     </template>
     <div class="ml-3 flex-grow">
-      <div class="font-medium" :class="severityClasses.title">{{ title }}</div>
-      <div class="text-[#334155] mt-[7px]">
+      <div 
+        class="font-medium" 
+        :class="severityClasses.title"
+        data-testid="message-title"
+      >
+        {{ title }}
+      </div>
+      <div 
+        class="text-[#334155] mt-[7px]"
+        data-testid="message-content"
+      >
         <slot />
       </div>
     </div>

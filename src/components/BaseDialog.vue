@@ -42,15 +42,27 @@
     :modal="props.modal"
     :closable="!loading && props.closable"
     :pt="passThrough"
+    role="dialog"
+    :aria-label="header || 'Dialog'"
+    :aria-modal="modal"
+    data-testid="base-dialog"
     @update:visible="!loading && emit('update:visible', $event)"
   >
     <template #header>
       <slot name="header">
-        <span class="font-bold text-lg">{{ props.header }}</span>
+        <span 
+          class="font-bold text-lg"
+          data-testid="dialog-header"
+        >
+          {{ props.header }}
+        </span>
       </slot>
     </template>
 
-    <div class="px-6 py-4">
+    <div 
+      class="px-6 py-4"
+      data-testid="dialog-content"
+    >
       <slot />
     </div>
 

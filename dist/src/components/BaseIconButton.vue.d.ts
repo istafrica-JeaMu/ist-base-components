@@ -22,9 +22,9 @@ declare const _default: import('vue').DefineComponent<BaseIconButtonProps, {}, {
     onClick?: ((event: MouseEvent) => any) | undefined;
 }>, {
     variant: "default" | "text" | "primary" | "secondary";
+    tabindex: number;
     size: "small" | "large" | "normal";
     disabled: boolean;
     loading: boolean;
-    tabindex: number;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 export default _default;

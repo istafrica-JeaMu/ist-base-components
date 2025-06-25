@@ -32,6 +32,10 @@
     :icon="icon"
     :removable="removable"
     :class="chipClass"
+    :aria-label="removable ? `${label} chip, removable` : `${label} chip`"
+    role="button"
+    tabindex="0"
+    data-testid="base-chip"
     @remove="$emit('remove')"
   />
 </template>

@@ -7,7 +7,14 @@
     Rationale: Extends PrimeVue's Tag component as it provides the necessary props (severity, icon, value)
     and the styling can be customized with :deep() selectors without significant conflicts.
   -->
-  <Tag :icon="icon" :value="value" :severity="severity" :rounded="rounded" />
+  <Tag 
+    :icon="icon" 
+    :value="value" 
+    :severity="severity" 
+    :rounded="rounded"
+    :aria-label="value ? `${severity || 'secondary'} tag: ${value}` : `${severity || 'secondary'} tag`"
+    data-testid="base-tag"
+  />
 </template>
 
 <script setup lang="ts">

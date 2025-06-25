@@ -79,12 +79,12 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<Ba
     variant: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
     invalid: boolean;
     required: boolean;
+    tabindex: number;
     size: "small" | "large" | "normal";
     disabled: boolean;
     modelValue: boolean | any[];
     readonly: boolean;
     indeterminate: boolean;
-    tabindex: number;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>, {
     label?(_: {}): any;
     help?(_: {}): any;

@@ -14,7 +14,7 @@
 - `showCharCount` (boolean): Shows a character count against the `maxlength`.
 -->
 <template>
-  <div class="flex flex-col gap-1 w-full">
+  <div class="flex flex-col gap-1 w-full" data-testid="base-textarea">
     <label v-if="label" :for="textareaId" class="text-sm font-medium text-text">
       {{ label }}
       <span v-if="required" class="text-danger ml-1">*</span>
@@ -27,13 +27,17 @@
       :disabled="disabled"
       :class="textareaClass"
       :aria-invalid="invalid"
+      :aria-label="ariaLabel || label"
+      :aria-required="required"
+      :aria-describedby="errorMessage && invalid ? `${textareaId}-error` : (helpText ? `${textareaId}-help` : undefined)"
+      data-testid="base-textarea-field"
     />
 
     <div class="flex justify-between items-center mt-1 text-xs">
-      <small v-if="errorMessage && invalid" class="text-danger">
+      <small v-if="errorMessage && invalid" :id="`${textareaId}-error`" class="text-danger">
         {{ errorMessage }}
       </small>
-      <small v-else-if="helpText" class="text-muted">
+      <small v-else-if="helpText" :id="`${textareaId}-help`" class="text-muted">
         {{ helpText }}
       </small>
       <small v-if="showCharCount && maxlength" class="text-muted ml-auto">
@@ -60,6 +64,8 @@ export interface BaseTextareaProps {
   errorMessage?: string
   helpText?: string
   showCharCount?: boolean
+  /** ARIA label for accessibility */
+  ariaLabel?: string
 }
 
 const props = withDefaults(defineProps<BaseTextareaProps>(), {
@@ -85,7 +91,7 @@ const charCount = computed(() => props.modelValue?.length || 0)
 
 const textareaClass = computed(() => {
   const baseClasses =
-    'w-full border rounded-lg p-3 text-sm font-inherit leading-relaxed transition-all duration-200 bg-white text-text resize-y min-h-[100px] focus:outline-none focus:ring-2'
+    'w-full border rounded-lg p-3 text-sm font-inherit leading-relaxed transition-all duration-200 bg-white text-text resize-y min-h-[100px] focus-visible:outline-none focus-visible:ring-2'
 
   const stateClasses = props.invalid
     ? 'border-danger focus:ring-danger focus:border-danger'

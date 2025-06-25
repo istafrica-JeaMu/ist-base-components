@@ -11,6 +11,8 @@ export interface BaseTextareaProps {
     errorMessage?: string;
     helpText?: string;
     showCharCount?: boolean;
+    /** ARIA label for accessibility */
+    ariaLabel?: string;
 }
 declare const _default: import('vue').DefineComponent<BaseTextareaProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: string) => any;
