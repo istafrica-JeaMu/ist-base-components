@@ -7,60 +7,127 @@ module.exports = {
     "./examples/**/*.{vue,js,ts,jsx,tsx}",
   ],
   safelist: [
-    // Pattern-based safelist to include all variants of custom colors
-    { pattern: /^(bg|text|border|ring)-(primary|secondary|success|warning|danger|hero|light|dark|accent|info|muted)/ },
-    { pattern: /^(bg|text|border)-(message|info-light|border)/ },
-    { pattern: /^(hover|focus|active|disabled):(bg|text|border|ring)-(primary|secondary|success|warning|danger|hero|light|dark|accent|info|muted)/ },
-    { pattern: /^(h|w|min-h|max-h|min-w|max-w)-(input|header|\d+|\[\d+px\])/ },
-    { pattern: /^(p|px|py|m|mx|my|mt|mb|ml|mr|gap)-(1|2|3|4|5|6|8|\[[\d.]+px\])/ },
-    { pattern: /^(text|font)-(xs|sm|base|lg|xl|medium|semibold|bold|\[\d+px\])/ },
-    { pattern: /^(rounded|border)-(none|sm|md|lg|xl|full|t-xl|b-xl)/ },
-    { pattern: /^(flex|items|justify|space)-(center|start|end|between|around|evenly|col|1|grow|shrink)/ },
-    { pattern: /^(transition|duration|ease)-(all|colors|transform|200|300|in|out|in-out)/ },
-    { pattern: /^(shadow|hover:shadow)-(sm|md|lg|xl|dialog)/ },
-    { pattern: /^(focus|focus-visible):(outline|ring)-(none|2|accent)/ },
-    { pattern: /^(cursor|overflow|opacity|z|resize|leading)-(pointer|not-allowed|hidden|auto|0|50|50|y|relaxed|tight)/ },
-    // Specific utilities that need to be included
-    'bg-primary', 'text-primary', 'border-primary', 'bg-primary-dark', 'bg-primary-darker',
-    'bg-secondary', 'text-secondary', 'border-secondary',
-    'bg-success', 'text-success', 'border-success',
-    'bg-warning', 'text-warning', 'border-warning',
-    'bg-danger', 'text-danger', 'border-danger',
-    'bg-hero', 'text-hero', 'border-hero',
+    // Only include specific utilities that are actually used in the project
+    // Basic color utilities
+    'bg-primary', 'text-primary', 'border-primary', 'ring-primary',
+    'bg-primary-dark', 'bg-primary-darker', 'text-primary-dark', 'border-primary-dark',
+    'bg-secondary', 'text-secondary', 'border-secondary', 'ring-secondary',
+    'bg-success', 'text-success', 'border-success', 'ring-success',
+    'bg-warning', 'text-warning', 'border-warning', 'ring-warning',
+    'bg-danger', 'text-danger', 'border-danger', 'ring-danger',
+    'bg-hero', 'text-hero', 'border-hero', 'ring-hero',
     'bg-light', 'text-light', 'border-light',
     'bg-dark', 'text-dark', 'border-dark',
     'bg-accent', 'text-accent', 'border-accent', 'ring-accent',
+    'bg-info', 'text-info', 'border-info', 'ring-info',
+    'bg-info-light', 'text-info-light',
     'text-text', 'text-muted', 'border-border',
-    'bg-info-light', 'text-info',
+    
+    // State variants - only the ones actually used
+    'hover:bg-primary-dark', 'hover:bg-primary-darker', 'hover:text-primary',
+    'hover:bg-secondary', 'hover:text-secondary',
+    'hover:bg-success', 'hover:text-success',
+    'hover:bg-warning', 'hover:text-warning',
+    'hover:bg-danger', 'hover:text-danger',
+    'hover:bg-hero', 'hover:text-hero',
+    'hover:bg-light', 'hover:text-light', 'hover:bg-light/50',
+    'hover:bg-dark', 'hover:text-dark',
+    'hover:bg-accent', 'hover:text-accent', 'hover:bg-accent/5', 'hover:bg-accent/20',
+    'hover:border-accent', 'hover:border-accent/20',
+    'hover:brightness-95', 'hover:brightness-90',
+    'hover:shadow-sm', 'hover:shadow-md', 'hover:shadow-lg', 'hover:shadow-xl',
+    'hover:scale-105',
+    
+    // Focus states - only the ones actually used
+    'focus:bg-primary', 'focus:border-primary', 'focus:ring-primary',
+    'focus:bg-secondary', 'focus:border-secondary', 'focus:ring-secondary',
+    'focus:bg-success', 'focus:border-success', 'focus:ring-success',
+    'focus:bg-warning', 'focus:border-warning', 'focus:ring-warning',
+    'focus:bg-danger', 'focus:border-danger', 'focus:ring-danger',
+    'focus:bg-accent', 'focus:border-accent', 'focus:ring-accent',
+    'focus:outline-none', 'focus:ring-2',
+    'focus-visible:outline-none', 'focus-visible:ring-2', 'focus-visible:ring-accent',
+    'focus-visible:ring-primary', 'focus-visible:ring-secondary', 'focus-visible:ring-success',
+    'focus-visible:ring-warning', 'focus-visible:ring-danger',
+    
+    // Active and disabled states
+    'active:bg-primary-darker', 'active:bg-border', 'active:brightness-90',
+    'disabled:text-muted', 'disabled:bg-light/30', 'disabled:cursor-not-allowed',
+    'disabled:bg-primary/50', 'disabled:bg-secondary/50', 'disabled:bg-success/50',
+    'disabled:bg-warning/50', 'disabled:bg-danger/50',
+    
+    // Opacity variants
+    'bg-primary/50', 'bg-primary/90', 'text-primary/80',
+    'bg-secondary/50', 'bg-secondary/90', 'text-secondary/80',
+    'bg-success/50', 'bg-success/90', 'text-success/80',
+    'bg-warning/50', 'bg-warning/90', 'text-warning/80',
+    'bg-danger/50', 'bg-danger/90', 'text-danger/80',
+    'bg-hero/70', 'bg-hero/90', 'text-hero/80',
+    'bg-light/30', 'bg-light/50', 'bg-light/60',
+    'bg-dark/80', 'bg-dark/60', 'text-dark/80', 'text-dark/60',
+    'bg-accent/5', 'bg-accent/10', 'bg-accent/20', 'text-accent/80',
+    'border-accent/20', 'ring-primary/20', 'ring-secondary/20', 'ring-success/20',
+    'ring-warning/20', 'ring-danger/20', 'ring-accent/50',
+    
     // Message colors
     'bg-message-success-light', 'text-message-success-dark', 'border-message-success-border',
     'bg-message-info-light', 'text-message-info-dark', 'border-message-info-border',
     'bg-message-warning-light', 'text-message-warning-dark', 'border-message-warning-border',
     'bg-message-danger-light', 'text-message-danger-dark', 'border-message-danger-border',
-    // Opacity variants
-    'bg-primary/50', 'bg-primary/90', 'bg-secondary/50', 'bg-success/50', 'bg-warning/50', 'bg-danger/50',
-    'bg-hero/70', 'bg-hero/90', 'bg-light/30', 'bg-light/50', 'bg-accent/5', 'bg-accent/10', 'bg-accent/20',
-    'text-dark/80', 'text-dark/60', 'border-accent/20',
-    // State variants
-    'hover:bg-primary-dark', 'hover:bg-hero/90', 'hover:bg-light/50', 'hover:bg-accent/5', 'hover:border-accent/20', 'hover:text-primary', 'hover:text-dark',
-    'focus:ring-primary/50', 'focus:ring-secondary/50', 'focus:ring-success/50', 'focus:ring-warning/50', 'focus:ring-danger/50',
-    'focus:border-primary', 'focus:border-danger', 'focus:outline-none', 'focus:ring-2',
-    'focus-visible:outline-none', 'focus-visible:ring-2', 'focus-visible:ring-accent',
-    'active:bg-primary-darker', 'active:bg-border', 'active:brightness-90',
-    'disabled:text-muted', 'disabled:bg-light/30', 'disabled:cursor-not-allowed',
+    
     // Component dimensions
     'h-input', 'h-header', 'h-6', 'h-7', 'h-8', 'h-10', 'h-12', 'h-16', 'h-full', 'min-h-[100px]',
     'w-6', 'w-7', 'w-8', 'w-full', 'w-[64px]', 'w-70',
-    // Specific spacing
+    
+    // Spacing utilities
     'py-[7px]', 'py-[14px]', 'px-[10.5px]', 'mt-[7px]', 'mr-1.5', 'gap-2.5',
-    // Complex utilities
-    'shadow-[0_4px_8px_0_rgba(1,8,4,0.04)]', 'text-[10px]', 'text-[23px]',
-    '!absolute', '!top-2.5', '!right-2.5', '!bg-transparent', '!border-none', '!border-t-0', '!p-0',
-    '-right-3', 'top-1/2', '-translate-y-1/2', '-translate-x-1/2',
     'space-y-0.5', 'space-y-3', 'space-y-6',
-    'hover:brightness-95', 'hover:shadow-md', 'hover:shadow-sm', 'hover:bg-black/10',
-    'border-l-4', 'border-b-2', 'border-r-2', 'border-b-0',
-    'animate-spin', 'bg-white', 'bg-gray-50', 'border-transparent'
+    
+    // Typography utilities
+    'text-[10px]', 'text-[23px]', 'text-xs', 'text-sm', 'text-base', 'text-lg', 'text-xl',
+    'font-medium', 'font-semibold', 'font-bold',
+    
+    // Layout utilities
+    'flex', 'inline-flex', 'items-center', 'justify-center', 'justify-between', 'justify-end',
+    'space-x-1', 'space-x-2', 'space-x-3', 'gap-1', 'gap-2', 'gap-3', 'gap-4',
+    
+    // Border utilities
+    'border', 'border-2', 'border-l-4', 'border-b-2', 'border-r-2', 'border-b-0', 'border-t-0',
+    'rounded', 'rounded-md', 'rounded-lg', 'rounded-xl', 'rounded-full', 'rounded-t-xl', 'rounded-b-xl',
+    
+    // Shadow utilities
+    'shadow-sm', 'shadow', 'shadow-md', 'shadow-lg', 'shadow-xl', 'shadow-dialog',
+    'shadow-[0_4px_8px_0_rgba(1,8,4,0.04)]',
+    
+    // Position utilities
+    'absolute', 'relative', 'fixed', 'top-1/2', 'right-3', '-right-3', '-translate-y-1/2', '-translate-x-1/2',
+    '!absolute', '!top-2.5', '!right-2.5',
+    
+    // Background utilities
+    'bg-white', 'bg-gray-50', 'bg-transparent', '!bg-transparent',
+    
+    // Border utilities with important
+    '!border-none', '!border-t-0', '!p-0',
+    'border-transparent',
+    
+    // Animation utilities
+    'animate-spin', 'transition-all', 'transition-colors', 'transition-transform',
+    'duration-200', 'duration-300', 'ease-in', 'ease-out', 'ease-in-out',
+    
+    // Cursor utilities
+    'cursor-pointer', 'cursor-not-allowed', 'cursor-wait',
+    
+    // Overflow utilities
+    'overflow-hidden', 'overflow-auto', 'overflow-y-auto',
+    
+    // Opacity utilities
+    'opacity-50', 'opacity-0',
+    
+    // Z-index utilities
+    'z-50',
+    
+    // Miscellaneous utilities
+    'leading-relaxed', 'leading-tight', 'resize-y'
   ],
   theme: {
     extend: {

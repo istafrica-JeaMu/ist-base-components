@@ -720,15 +720,16 @@ const testBaseCheckbox = ref(false)
 </script>
 
 <style scoped>
+/* Use IST-BEM gallery utilities for conflict-free styling */
 .gallery-section {
-  @apply mb-12;
+  @apply ist-gallery__section;
 }
 
 .gallery-section-title {
-  @apply text-2xl font-semibold text-dark mb-4;
+  @apply ist-gallery__title;
 }
 
 .gallery-subsection-title {
-  @apply text-lg font-medium text-dark mt-6 mb-3;
+  @apply ist-gallery__subtitle;
 }
 </style> 

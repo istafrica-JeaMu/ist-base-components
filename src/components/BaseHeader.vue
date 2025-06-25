@@ -75,21 +75,6 @@ defineProps<BaseHeaderProps>();
 </script>
 
 <style scoped>
-/* Custom scrollbar for notifications */
-.overflow-y-auto::-webkit-scrollbar {
-  width: 4px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-  background: rgba(252, 211, 77, 0.3);
-  border-radius: 2px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: rgba(252, 211, 77, 0.5);
-}
+/* Use IST-BEM scrollbar utility for conflict-free styling */
+/* The .ist-scrollbar class is defined in ist-bem-utilities.css */
 </style> 

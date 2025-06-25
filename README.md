@@ -1,15 +1,18 @@
 # IST Base Components
 
-A comprehensive Vue 3 component library built on top of PrimeVue, featuring professional, reusable components styled with Tailwind CSS.
+A comprehensive Vue 3 component library built on top of PrimeVue, featuring professional, reusable components styled with Tailwind CSS and IST-BEM methodology for conflict-free integration.
 
 ## Features
 
 - 🎨 **Professional Design**: Pixel-perfect components following modern design principles
 - 🔧 **Highly Customizable**: Extensive prop system for different variants and sizes
-- ♿ **Accessible**: Built on PrimeVue's solid accessibility foundation
+- ♿ **Accessible**: Built on PrimeVue's solid accessibility foundation with WCAG 2.1 AA compliance
 - 🎯 **TypeScript**: Full TypeScript support with comprehensive type definitions
 - 🎨 **Tailwind CSS**: Styled with Tailwind CSS for consistent design system
+- 🛡️ **Conflict-Free**: IST-BEM methodology prevents CSS conflicts in consuming projects
 - 📱 **Responsive**: Mobile-first responsive design approach
+- 🧪 **Tested**: Comprehensive testing with unit, E2E, visual regression, and accessibility tests
+- 📚 **Documented**: Complete Storybook documentation and examples
 
 ## Installation
 
@@ -78,6 +81,8 @@ export default {
 ```
 
 ## Available Components
+
+**23 professional Vue 3 components** extending PrimeVue with conflict-free CSS:
 
 ### Form Components
 - **BaseInput** - Text input with icon support and validation
@@ -206,6 +211,51 @@ import { BaseCard, BaseButton } from 'ist-base-components'
 </script>
 ```
 
+### BaseMessage
+
+```vue
+<template>
+  <div>
+    <!-- Success message -->
+    <BaseMessage severity="success" title="Success">
+      Your profile has been updated successfully.
+    </BaseMessage>
+    
+    <!-- Info message with close button -->
+    <BaseMessage 
+      severity="info" 
+      title="Information" 
+      :closable="true"
+      @close="handleClose"
+    >
+      Please review your account settings.
+    </BaseMessage>
+    
+    <!-- Warning message -->
+    <BaseMessage severity="warn" title="Warning">
+      Your session will expire in 5 minutes.
+    </BaseMessage>
+    
+    <!-- Danger message with custom icon -->
+    <BaseMessage 
+      severity="danger" 
+      title="Error" 
+      icon="pi pi-exclamation-circle"
+    >
+      Unable to save changes. Please try again.
+    </BaseMessage>
+  </div>
+</template>
+
+<script setup>
+import { BaseMessage } from 'ist-base-components'
+
+const handleClose = () => {
+  console.log('Message closed!')
+}
+</script>
+```
+
 ### BaseCheckbox
 
 ```vue
@@ -318,7 +368,37 @@ npm run build:lib
 
 # Run development server with examples
 npm run dev
+
+# Run tests
+npm run test:run
+
+# Start Storybook documentation
+npm run storybook
 ```
+
+### Quality Assurance
+
+This library includes comprehensive quality assurance:
+
+- **Unit Testing**: Vitest with 80%+ coverage requirement
+- **E2E Testing**: Playwright for user interaction flows  
+- **Visual Regression**: Screenshot comparison testing
+- **Accessibility Testing**: WCAG 2.1 AA compliance with axe-playwright
+- **Performance Monitoring**: Bundle size analysis and Lighthouse CI
+- **CI/CD Pipeline**: Automated testing and deployment
+
+### IST-BEM Methodology
+
+All components use IST-BEM (Block Element Modifier) methodology with `ist-` prefixes to prevent CSS conflicts:
+
+```css
+/* IST-BEM classes prevent conflicts when library is imported */
+.ist-button { }              /* Block */
+.ist-button--primary { }     /* Block with Modifier */
+.ist-dropdown__item { }      /* Block with Element */
+```
+
+This ensures zero CSS conflicts when the library is imported into consuming projects.
 
 ## Contributing
 

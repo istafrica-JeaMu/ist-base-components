@@ -28,6 +28,7 @@ Every component implements:
 - **Flexible Slots**: `default`, `prefix`, `suffix`, `header`, `footer`, `actions`
 - **Comprehensive Events**: Standard DOM events plus custom component events
 - **Cross-Project Compatibility**: Minimal dependencies, standard Vue patterns
+- **IST-BEM CSS**: Conflict-free styling with `ist-` prefixed classes
 
 ## Technology Stack
 
@@ -113,7 +114,7 @@ export interface BaseComponentSlots {
 
 ### Tailwind CSS Design System
 
-Components use a consistent design system:
+Components use a consistent design system with IST-BEM methodology:
 
 ```css
 /* Colors */
@@ -134,6 +135,33 @@ Components use a consistent design system:
 --text-sm: 0.875rem
 --text-base: 1rem
 ```
+
+### IST-BEM Methodology
+
+All custom CSS classes follow BEM (Block Element Modifier) methodology with IST prefixes:
+
+```css
+/* Block Level Components */
+.ist-button { }              /* Button component */
+.ist-input { }               /* Input component */
+.ist-card { }                /* Card component */
+
+/* Elements */
+.ist-dropdown__item { }      /* Dropdown item element */
+.ist-table__header { }       /* Table header element */
+.ist-sidemenu__item { }      /* Menu item element */
+
+/* Modifiers */
+.ist-button--primary { }     /* Primary button variant */
+.ist-button--small { }       /* Small button size */
+.ist-input--error { }        /* Input error state */
+```
+
+This methodology ensures:
+- **Zero CSS Conflicts**: No naming collisions when library is imported
+- **Clear Semantics**: Component purpose is obvious from class name
+- **Maintainable Code**: Consistent naming patterns across all components
+- **Professional Standards**: Industry-standard BEM methodology
 
 ### Accessibility Standards
 

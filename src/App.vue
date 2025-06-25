@@ -71,7 +71,7 @@
       </BaseHeader>
 
       <!-- Main Content -->
-      <main class="flex-1 overflow-y-auto">
+      <main class="flex-1 overflow-y-auto ist-scrollbar">
         <ComponentGallery />
       </main>
     </div>
@@ -179,26 +179,29 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* Global styles if needed, e.g., for scrollbar */
+/* Global styles for app */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.overflow-y-auto::-webkit-scrollbar {
+/* Use IST-BEM scrollbar utility for conflict-free styling */
+/* The .ist-scrollbar class is defined in ist-bem-utilities.css */
+/* Apply to main content area */
+main.ist-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 
-.overflow-y-auto::-webkit-scrollbar-track {
+main.ist-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.overflow-y-auto::-webkit-scrollbar-thumb {
+main.ist-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
-.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+main.ist-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.2);
 }
 </style> 

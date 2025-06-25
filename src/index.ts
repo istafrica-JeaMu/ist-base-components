@@ -4,8 +4,8 @@
 // Library installation function
 import type { App } from 'vue'
 
-// Import custom utilities CSS to ensure they are included in the build
-import './utilities.css'
+// Import Tailwind CSS with IST-BEM utilities to ensure they are included in the build
+import './assets/tailwind.css'
 
 import BaseAccordion from './components/BaseAccordion.vue'
 import BaseBadge from './components/BaseBadge.vue'
@@ -21,6 +21,7 @@ import BaseHeader from './components/BaseHeader.vue'
 import BaseHierarchicalSelect from './components/BaseHierarchicalSelect.vue'
 import BaseIconButton from './components/BaseIconButton.vue'
 import BaseInput from './components/BaseInput.vue'
+import BaseMessage from './components/BaseMessage.vue'
 import BaseMultiSelect from './components/BaseMultiSelect.vue'
 import BaseSelect from './components/BaseSelect.vue'
 import BaseSideMenu from './components/BaseSideMenu.vue'
@@ -43,6 +44,7 @@ const components = {
   BaseHierarchicalSelect,
   BaseIconButton,
   BaseInput,
+  BaseMessage,
   BaseMultiSelect,
   BaseSelect,
   BaseSideMenu,
@@ -76,6 +78,7 @@ export {
   BaseHierarchicalSelect,
   BaseIconButton,
   BaseInput,
+  BaseMessage,
   BaseMultiSelect,
   BaseSelect,
   BaseSideMenu,
@@ -155,3 +158,7 @@ export type {
   SideMenuItemEmits,
   SideMenuItemSlots
 } from './components/SideMenuItem.vue'
+
+export type {
+  BaseMessageProps
+} from './components/BaseMessage.vue'

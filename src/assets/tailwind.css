@@ -1,3 +1,6 @@
+/* Import IST-BEM utilities for conflict-free library distribution */
+@import './ist-bem-utilities.css';
+
 /* 1. Define the layers. Order matters: higher layers override lower ones. */
 @layer base, components, utilities;
 
