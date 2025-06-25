@@ -1,0 +1,180 @@
+/* 1. Define the layers. Order matters: higher layers override lower ones. */
+@layer base, components, utilities;
+
+/* 2. Import PrimeVue styles into the 'base' layer. */
+@layer base {
+  @import 'primevue/resources/themes/lara-light-blue/theme.css';
+  @import 'primevue/resources/primevue.min.css';
+  @import 'primeicons/primeicons.css';
+}
+
+/* 3. Let Tailwind handle the rest in the 'utilities' layer */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 4. Global font overrides in utilities layer for highest precedence */
+@layer utilities {
+  /* Override PrimeVue dropdown font inheritance with side menu consistency */
+  .p-dropdown,
+  .p-dropdown *,
+  .p-dropdown-label,
+  .p-dropdown-item,
+  .p-dropdown-panel .p-dropdown-item,
+  .p-multiselect,
+  .p-multiselect *,
+  .p-multiselect-label,
+  .p-multiselect-item,
+  .p-multiselect-panel .p-multiselect-item,
+  .p-multiselect-filter {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: normal !important;
+    color: rgba(33, 37, 41, 0.7) !important;
+  }
+
+  /* Specific overrides for the exact elements seen in developer tools */
+  .p-multiselect-item {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: normal !important;
+    color: rgba(33, 37, 41, 0.7) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  /* Override active/selected states */
+  .p-dropdown-item.p-highlight,
+  .p-dropdown-label.p-highlight,
+  .p-multiselect-item.p-highlight {
+    color: #212529 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Override hover states */
+  .p-dropdown-item:hover,
+  .p-multiselect-item:hover {
+    color: #212529 !important;
+  }
+
+  /* Additional specific overrides for stubborn elements */
+  .p-component,
+  .p-component * {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+  }
+
+  /* Override root CSS custom properties if they exist */
+  :root {
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+  }
+}
+
+/* Now, any utility class from Tailwind (e.g., .bg-red-500) will
+   automatically have higher precedence than any style from the PrimeVue theme. */
+
+/* Custom component styles using @apply */
+@layer components {
+  /* Button base styles */
+  .btn-base {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn-base bg-primary text-white hover:bg-primary/90 focus:ring-primary/50;
+  }
+  
+  .btn-secondary {
+    @apply btn-base bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary/50;
+  }
+  
+  .btn-success {
+    @apply btn-base bg-success text-white hover:bg-success/90 focus:ring-success/50;
+  }
+  
+  .btn-warning {
+    @apply btn-base bg-warning text-dark hover:bg-warning/90 focus:ring-warning/50;
+  }
+  
+  .btn-danger {
+    @apply btn-base bg-danger text-white hover:bg-danger/90 focus:ring-danger/50;
+  }
+  
+  /* Button sizes */
+  .btn-small {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  .btn-normal {
+    @apply px-4 py-2 text-base;
+  }
+  
+  .btn-large {
+    @apply px-6 py-3 text-lg;
+  }
+  
+  /* Input base styles */
+  .input-base {
+    @apply w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 bg-white text-text;
+  }
+  
+  .input-error {
+    @apply border-danger focus:ring-danger/50 focus:border-danger;
+  }
+  
+  /* Card styles */
+  .card-base {
+    @apply bg-white rounded-lg shadow-md border border-border;
+  }
+  
+  .card-primary {
+    @apply card-base border-l-4 border-primary;
+  }
+  
+  /* Side menu styles */
+  .sidemenu-item {
+    @apply flex items-center px-4 py-3 text-text hover:bg-accent/20 hover:text-dark transition-all duration-200 cursor-pointer;
+  }
+  
+  .sidemenu-item-active {
+    @apply bg-accent text-dark border-r-2 border-accent;
+  }
+  
+  .sidemenu-submenu {
+    @apply pl-8 bg-light/50;
+  }
+  
+  /* Header styles */
+  .header-base {
+    @apply bg-white border-b border-border px-6 py-4 flex items-center justify-between;
+  }
+  
+  /* Data table styles */
+  .table-header {
+    @apply bg-light text-dark font-semibold px-4 py-3 border-b border-border;
+  }
+  
+  .table-cell {
+    @apply px-4 py-3 border-b border-border text-text;
+  }
+  
+  /* Dropdown styles */
+  .dropdown-base {
+    @apply w-full bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+  
+  .dropdown-item {
+    @apply px-4 py-2 hover:bg-accent/20 hover:text-dark cursor-pointer transition-all duration-200;
+  }
+  
+  .dropdown-item-selected {
+    @apply bg-accent text-dark;
+  }
+} 

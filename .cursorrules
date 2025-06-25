@@ -1,0 +1,907 @@
+{
+  "version": 2,
+  "senior-component-generation": {
+      "role": "Senior UI/UX and Vue.js Developer with PrimeVue and Tailwind CSS Expertise and a senior components Architect",
+      "approach": {
+        "figma-analysis": {
+          "steps": [
+            "Analyze Figma design pixel-perfectly, examining every detail",
+            "Identify component hierarchy and relationships",
+            "Extract exact colors, spacing, typography, and dimensions",
+            "Understand interactive states (hover, focus, active, disabled)",
+            "Map design tokens to Tailwind utilities and design system",
+            "Identify accessibility requirements and ARIA patterns",
+            "Determine responsive breakpoints and mobile-first approach"
+          ],
+          "message": "Read Figma designs with meticulous attention to detail, understanding the complete design system and user experience"
+        },
+        "tailwind-css-implementation": {
+          "requirements": [
+            "Use Tailwind CSS utility classes for all styling",
+            "Map design system colors to Tailwind color utilities",
+            "Use design system spacing values with Tailwind spacing utilities",
+            "Implement responsive design with Tailwind breakpoint prefixes",
+            "Use Tailwind state variants for interactive elements",
+            "Apply Tailwind opacity utilities for transparency effects",
+            "Use Tailwind layout utilities (flex, grid) for structure",
+            "Implement Tailwind typography utilities for text styling",
+            "Use Tailwind border and shadow utilities for visual effects",
+            "Apply Tailwind transition utilities for smooth animations"
+          ],
+          "design-system-mapping": {
+            "colors": {
+              "primary": "text-primary bg-primary border-primary",
+              "secondary": "text-secondary bg-secondary border-secondary",
+              "success": "text-success bg-success border-success",
+              "warning": "text-warning bg-warning border-warning",
+              "danger": "text-danger bg-danger border-danger",
+              "light": "text-dark bg-light border-light",
+              "dark": "text-light bg-dark border-dark",
+              "border": "border-border",
+              "text": "text-text",
+              "muted": "text-muted",
+              "accent": "text-dark bg-accent border-accent"
+            },
+            "spacing": {
+              "0.25rem": "p-1 m-1 gap-1 space-x-1 space-y-1",
+              "0.5rem": "p-2 m-2 gap-2 space-x-2 space-y-2",
+              "0.75rem": "p-3 m-3 gap-3 space-x-3 space-y-3",
+              "1rem": "p-4 m-4 gap-4 space-x-4 space-y-4",
+              "1.25rem": "p-5 m-5 gap-5 space-x-5 space-y-5",
+              "1.5rem": "p-6 m-6 gap-6 space-x-6 space-y-6",
+              "2rem": "p-8 m-8 gap-8 space-x-8 space-y-8"
+            },
+            "border-radius": {
+              "4px": "rounded",
+              "6px": "rounded-md",
+              "8px": "rounded-lg",
+              "50%": "rounded-full"
+            },
+            "font-sizes": {
+              "0.75rem": "text-xs",
+              "0.875rem": "text-sm",
+              "1rem": "text-base",
+              "1.125rem": "text-lg",
+              "1.25rem": "text-xl"
+            }
+          },
+          "message": "Implement all styling using Tailwind CSS utilities, mapping design system tokens to appropriate Tailwind classes"
+        },
+        "base-component-architecture": {
+          "principles": [
+            "Create reusable base components that inherit from PrimeVue",
+            "Design for consumption by multiple Vue.js frontend projects",
+            "Implement flexible prop system for customization across projects",
+            "Use slots for content injection to maximize reusability",
+            "Provide sensible defaults while allowing project-specific overrides",
+            "Create component variants for different use cases and contexts",
+            "Ensure components work independently across different project setups",
+            "Minimize external dependencies beyond PrimeVue and Tailwind CSS"
+          ],
+          "reusability-features": {
+            "props": [
+              "variant: default, primary, secondary, success, warning, danger",
+              "size: small, normal, large",
+              "disabled: boolean for interactive states",
+              "loading: boolean for loading states",
+              "custom classes: string for project-specific styling",
+              "custom styles: object for inline style overrides"
+            ],
+            "slots": [
+              "default: Main content slot",
+              "prefix: Content before main element",
+              "suffix: Content after main element",
+              "header: Header content",
+              "footer: Footer content",
+              "actions: Action buttons or controls"
+            ],
+            "events": [
+              "Standard DOM events (click, input, change, etc.)",
+              "Custom component-specific events",
+              "Proper event validation and error handling"
+            ]
+          },
+          "message": "Architect components as professional, reusable building blocks that can be consumed by any Vue.js frontend project with minimal configuration"
+        },
+        "primevue-integration": {
+          "patterns": [
+            "Extend PrimeVue components rather than replacing them",
+            "Use :deep() selector for styling PrimeVue components with Tailwind",
+            "Maintain PrimeVue's accessibility and functionality",
+            "Override only necessary styles to match design using Tailwind utilities",
+            "Preserve PrimeVue's event system and API",
+            "Use PrimeVue's built-in validation and error handling",
+            "Leverage PrimeVue's responsive design features",
+            "Combine PrimeVue functionality with Tailwind styling"
+          ],
+          "styling-approach": {
+            "template": "Use Tailwind utility classes directly in template",
+            "scoped-styles": "Use :deep() with Tailwind utilities for PrimeVue overrides",
+            "avoid-custom-css": "Prefer Tailwind utilities over custom CSS",
+            "design-system-compliance": "Map all design tokens to Tailwind utilities",
+            "override-strategy": [
+              "1. Attempt overrides using standard :deep() and Tailwind utilities.",
+              "2. If styles are still not applying, use !important prefixes on specific utilities (e.g., !bg-accent).",
+              "3. If aggressive overrides are still required, reconsider the approach using the Decision Framework."
+            ]
+          },
+          "decision-framework": {
+            "title": "Build vs. Extend Decision Framework",
+            "steps": [
+              "1. Assess Functional Complexity: If the component requires complex state management, accessibility (ARIA), or logic (e.g., a data table, a date picker), strongly favor EXTENDING the PrimeVue component.",
+              "2. Assess Styling Complexity: If the Figma design requires a radical departure from the PrimeVue component's structure and appearance, strongly favor BUILDING a custom component from scratch.",
+              "3. The Tipping Point: If you spend more than 15-20 minutes fighting CSS specificity issues, it is a sign that a custom implementation will likely be faster and more maintainable in the long run."
+            ],
+            "message": "Consciously decide whether to extend a PrimeVue component or build a custom one based on the trade-off between functional and styling complexity."
+          },
+          "message": "Build upon PrimeVue's solid foundation, using a clear decision framework and override strategy to handle integration challenges with Tailwind CSS."
+        },
+        "ui-ux-excellence": {
+          "standards": [
+            "Implement pixel-perfect visual design from Figma using Tailwind",
+            "Ensure smooth animations and transitions with Tailwind utilities",
+            "Create intuitive user interactions and feedback",
+            "Maintain visual hierarchy and information architecture",
+            "Implement proper loading states and error handling",
+            "Ensure consistent spacing and alignment using Tailwind spacing",
+            "Create accessible color contrast and focus indicators",
+            "Use Tailwind responsive utilities for mobile-first design"
+          ],
+          "message": "Deliver exceptional user experience with attention to visual design, interactions, and accessibility using Tailwind CSS"
+        },
+        "code-quality": {
+          "requirements": [
+            "Write clean, maintainable, and well-documented code",
+            "Use semantic HTML and proper ARIA attributes",
+            "Implement proper TypeScript types and interfaces",
+            "Follow Vue.js best practices and conventions",
+            "Use Tailwind CSS for all styling with design system compliance",
+            "Implement proper error handling and validation",
+            "Write comprehensive component documentation",
+            "Ensure components are self-contained and portable"
+          ],
+          "message": "Generate production-ready code that follows industry best practices and is maintainable by other developers"
+        },
+        "cross-project-compatibility": {
+          "requirements": [
+            "Design components to work in any Vue.js project setup",
+            "Minimize external dependencies beyond PrimeVue and Tailwind",
+            "Use standard Vue.js patterns and APIs",
+            "Implement proper TypeScript interfaces for type safety",
+            "Provide comprehensive prop validation and defaults",
+            "Create flexible styling system that adapts to different projects",
+            "Document installation and usage requirements",
+            "Ensure components work with different Tailwind configurations"
+          ],
+          "message": "Create components that can be easily integrated into any Vue.js frontend project with minimal setup and configuration"
+        }
+      },
+      "output-format": {
+        "structure": [
+          "Complete Vue 3 component with script setup",
+          "TypeScript interfaces for all props and events",
+          "Tailwind CSS styling with design system compliance",
+          "PrimeVue component inheritance and customization",
+          "Comprehensive event handling and validation",
+          "Accessibility features and ARIA attributes",
+          "Responsive design with mobile-first approach using Tailwind",
+          "Component documentation and usage examples",
+          "Cross-project compatibility considerations"
+        ],
+        "required-sections": {
+          "template": "Semantic HTML with Tailwind utility classes",
+          "script": "Vue 3 composition API with TypeScript interfaces",
+          "style": "Scoped styles with :deep() for PrimeVue overrides using Tailwind",
+          "documentation": "Usage examples, prop descriptions, and integration guide"
+        },
+        "message": "Generate complete, production-ready base components that can be immediately used in any Vue.js frontend project"
+      },
+      "message": "Generate Vue.js base components from Figma designs as a senior UI/UX developer with PrimeVue and Tailwind CSS expertise, creating reusable, accessible, and maintainable components that inherit from PrimeVue, use Tailwind CSS for styling, and can be consumed by any Vue.js frontend project with minimal configuration",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+  "rules": {
+    "component-naming": {
+      "pattern": "^Base[A-Z][a-zA-Z]*\\.vue$",
+      "message": "Component files should be named using PascalCase and start with 'Base' prefix",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "component-structure": {
+      "order": [
+        "<template>",
+        "<script setup lang=\"ts\">",
+        "<style scoped>"
+      ],
+      "message": "Components must follow the standard structure: template -> script -> style",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "typescript-props": {
+      "pattern": "export interface.*Props {",
+      "message": "Components must define their props using TypeScript interfaces",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "vue3-composition-api": {
+      "required": [
+        "<script setup lang=\"ts\">",
+        "defineProps<",
+        "defineEmits<",
+        "defineExpose",
+        "withDefaults"
+      ],
+      "patterns": [
+        "import.*from 'vue'",
+        "import.*from '@vue/.*'",
+        "ref\\(.*\\)",
+        "reactive\\(.*\\)",
+        "computed\\(.*\\)",
+        "watch\\(.*\\)",
+        "onMounted\\(.*\\)",
+        "onUnmounted\\(.*\\)"
+      ],
+      "message": "Use Vue 3 Composition API with script setup syntax and proper TypeScript integration",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "typescript-interfaces": {
+      "required": [
+        "export interface.*Props",
+        "export interface.*Emits",
+        "export interface.*Slots"
+      ],
+      "patterns": [
+        "interface.*\\{[^}]*\\}",
+        "type.*=.*\\{[^}]*\\}",
+        "extends.*\\{[^}]*\\}"
+      ],
+      "message": "Define comprehensive TypeScript interfaces for props, emits, and slots with proper type safety",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "component-documentation": {
+      "required": [
+        "<!-- Component description -->",
+        "<!-- Rationale: [Justification for custom implementation vs. PrimeVue extension, if applicable] -->",
+        "<!-- Props: -->",
+        "<!-- Events: -->",
+        "<!-- Slots: -->",
+        "<!-- Usage: -->"
+      ],
+      "patterns": [
+        "<!--[^-]*-->",
+        "/\\*\\*[^*]*\\*/",
+        "//.*"
+      ],
+      "message": "Include comprehensive JSDoc comments and HTML comments for component documentation",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "performance-optimization": {
+      "patterns": [
+        "v-memo",
+        "v-once",
+        "shallowRef",
+        "shallowReactive",
+        "markRaw",
+        "nextTick"
+      ],
+      "message": "Use Vue 3 performance optimization features when appropriate",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "error-handling": {
+      "required": [
+        "try\\s*\\{",
+        "catch\\s*\\(.*\\)\\s*\\{",
+        "throw new Error",
+        "console\\.error"
+      ],
+      "patterns": [
+        "error\\s*=\\s*ref\\(.*\\)",
+        "hasError\\s*=\\s*computed",
+        "v-if.*error"
+      ],
+      "message": "Implement proper error handling with try-catch blocks and error states",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "validation": {
+      "required": [
+        "validator\\s*\\(",
+        "required:\\s*true",
+        "type:\\s*\\[",
+        "default:\\s*"
+      ],
+      "patterns": [
+        "propTypes",
+        "runtime.*validator",
+        "custom.*validator"
+      ],
+      "message": "Implement comprehensive prop validation with custom validators and type checking",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "testing-readiness": {
+      "required": [
+        "data-testid",
+        "aria-label",
+        "role",
+        "name"
+      ],
+      "patterns": [
+        "data-.*=.*",
+        "id=.*",
+        "class=.*"
+      ],
+      "message": "Add testing attributes and semantic identifiers for component testing",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-priority": {
+      "message": "Prefer Tailwind utility classes over custom CSS. Use @apply only for complex component overrides",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-apply-avoidance": {
+      "pattern": "@apply\\s+[a-z-]+\\s*;",
+      "message": "Avoid @apply for simple utilities. Use direct Tailwind classes in template instead",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-circular-dependency": {
+      "pattern": "@apply\\s+[a-z-]+\\s*;",
+      "message": "Never use @apply with the same class name as the selector to avoid circular dependencies",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-responsive": {
+      "pattern": "(sm:|md:|lg:|xl:)[a-z-]+",
+      "message": "Use responsive prefixes (sm:, md:, lg:, xl:) for mobile-first responsive design",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-state-classes": {
+      "pattern": "(hover:|focus:|active:|disabled:)[a-z-]+",
+      "message": "Use state variants (hover:, focus:, active:, disabled:) for interactive elements",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-opacity-utilities": {
+      "pattern": "[a-z-]+/[0-9]+",
+      "message": "Use Tailwind opacity utilities (e.g., bg-accent/10, text-success/80) for transparency",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-conditional-classes": {
+      "pattern": ":class=\"\\{[^}]*\\}\"",
+      "message": "Use dynamic class binding with Tailwind utilities for conditional styling",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "color-system": {
+      "colors": {
+        "primary": "#667eea",
+        "secondary": "#6c757d",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "light": "#f8f9fa",
+        "dark": "#212529",
+        "border": "#e9ecef",
+        "text": "#495057",
+        "muted": "#6c757d",
+        "accent": "#FCD34D"
+      },
+      "tailwind-colors": {
+        "primary": "text-primary bg-primary border-primary",
+        "secondary": "text-secondary bg-secondary border-secondary",
+        "success": "text-success bg-success border-success",
+        "warning": "text-warning bg-warning border-warning",
+        "danger": "text-danger bg-danger border-danger",
+        "light": "text-dark bg-light border-light",
+        "dark": "text-light bg-dark border-dark",
+        "border": "border-border",
+        "text": "text-text",
+        "muted": "text-muted",
+        "accent": "text-dark bg-accent border-accent"
+      },
+      "message": "Use only approved colors from the design system. Prefer Tailwind color utilities over custom CSS",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "spacing-system": {
+      "values": [
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "2rem"
+      ],
+      "tailwind-spacing": {
+        "0.25rem": "p-1 m-1 gap-1 space-x-1 space-y-1",
+        "0.5rem": "p-2 m-2 gap-2 space-x-2 space-y-2",
+        "0.75rem": "p-3 m-3 gap-3 space-x-3 space-y-3",
+        "1rem": "p-4 m-4 gap-4 space-x-4 space-y-4",
+        "1.25rem": "p-5 m-5 gap-5 space-x-5 space-y-5",
+        "1.5rem": "p-6 m-6 gap-6 space-x-6 space-y-6",
+        "2rem": "p-8 m-8 gap-8 space-x-8 space-y-8"
+      },
+      "message": "Use consistent spacing values from the design system. Prefer Tailwind spacing utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "border-radius": {
+      "values": [
+        "4px",
+        "6px",
+        "8px",
+        "50%"
+      ],
+      "tailwind-radius": {
+        "4px": "rounded",
+        "6px": "rounded-md",
+        "8px": "rounded-lg",
+        "50%": "rounded-full"
+      },
+      "message": "Use consistent border radius values from the design system. Prefer Tailwind rounded utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "font-sizes": {
+      "values": [
+        "0.75rem",
+        "0.875rem",
+        "1rem",
+        "1.125rem",
+        "1.25rem"
+      ],
+      "tailwind-fonts": {
+        "0.75rem": "text-xs",
+        "0.875rem": "text-sm",
+        "1rem": "text-base",
+        "1.125rem": "text-lg",
+        "1.25rem": "text-xl"
+      },
+      "message": "Use consistent font sizes from the design system. Prefer Tailwind text utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "component-props": {
+      "required": [
+        "variant",
+        "size"
+      ],
+      "variants": [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "sizes": [
+        "small",
+        "normal",
+        "large"
+      ],
+      "message": "Components must implement standard variant and size props",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-variant-mapping": {
+      "variants": {
+        "default": "bg-white text-text border-border",
+        "primary": "bg-primary text-white border-primary",
+        "secondary": "bg-secondary text-white border-secondary",
+        "success": "bg-success text-white border-success",
+        "warning": "bg-warning text-dark border-warning",
+        "danger": "bg-danger text-white border-danger"
+      },
+      "sizes": {
+        "small": "text-sm px-2 py-1 h-8",
+        "normal": "text-base px-4 py-2 h-10",
+        "large": "text-lg px-6 py-3 h-12"
+      },
+      "message": "Map component variants and sizes to appropriate Tailwind utility classes",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "dark-mode": {
+      "pattern": "(dark:|dark\\[.*\\])[a-z-]+",
+      "message": "Use Tailwind dark mode utilities (dark:) for dark mode support",
+      "severity": "error",
+      "include": ["src/components/*.vue"]
+    },
+    "accessibility": {
+      "required": [
+        "aria-label",
+        "role",
+        "tabindex"
+      ],
+      "tailwind-accessibility": {
+        "focus-visible": "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+        "sr-only": "sr-only",
+        "not-sr-only": "not-sr-only"
+      },
+      "message": "Components must implement proper accessibility attributes. Use Tailwind focus utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "responsive-design": {
+      "breakpoints": {
+        "sm": "576px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px"
+      },
+      "tailwind-breakpoints": {
+        "sm": "sm:",
+        "md": "md:",
+        "lg": "lg:",
+        "xl": "xl:"
+      },
+      "message": "Use Tailwind responsive prefixes for mobile-first responsive design",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "imports": {
+      "pattern": "import.*from 'primevue/.*'",
+      "message": "Use PrimeVue components as base components",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "component-dimensions": {
+      "header-height": "64px",
+      "sidemenu-width": {
+        "expanded": "280px",
+        "collapsed": "64px"
+      },
+      "input-height": "34px",
+      "button-height": {
+        "small": "32px",
+        "normal": "40px",
+        "large": "48px"
+      },
+      "tailwind-dimensions": {
+        "header-height": "h-16",
+        "sidemenu-expanded": "w-70",
+        "sidemenu-collapsed": "w-16",
+        "input-height": "h-input",
+        "button-small": "h-8",
+        "button-normal": "h-10",
+        "button-large": "h-12"
+      },
+      "message": "Use consistent component dimensions from the design system. Prefer Tailwind sizing utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "transitions": {
+      "values": [
+        "all 0.2s ease",
+        "all 0.2s ease-in-out",
+        "all 0.3s ease-in-out"
+      ],
+      "tailwind-transitions": {
+        "all 0.2s ease": "transition-all duration-200 ease-in",
+        "all 0.2s ease-in-out": "transition-all duration-200 ease-in-out",
+        "all 0.3s ease-in-out": "transition-all duration-300 ease-in-out"
+      },
+      "message": "Use consistent transition values from the design system. Prefer Tailwind transition utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "shadows": {
+      "values": [
+        "0 2px 4px rgba(0, 0, 0, 0.1)",
+        "0 4px 6px rgba(0, 0, 0, 0.1)",
+        "0 4px 8px rgba(0, 0, 0, 0.1)",
+        "0 4px 12px rgba(0, 0, 0, 0.15)",
+        "0 8px 25px rgba(0, 0, 0, 0.15)"
+      ],
+      "tailwind-shadows": {
+        "0 2px 4px rgba(0, 0, 0, 0.1)": "shadow-sm",
+        "0 4px 6px rgba(0, 0, 0, 0.1)": "shadow",
+        "0 4px 8px rgba(0, 0, 0, 0.1)": "shadow-md",
+        "0 4px 12px rgba(0, 0, 0, 0.15)": "shadow-lg",
+        "0 8px 25px rgba(0, 0, 0, 0.15)": "shadow-xl"
+      },
+      "message": "Use consistent shadow values from the design system. Prefer Tailwind shadow utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "gradients": {
+      "values": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)"
+      ],
+      "tailwind-gradients": {
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)": "bg-gradient-to-br from-primary to-purple-600",
+        "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)": "bg-gradient-to-br from-light to-border"
+      },
+      "message": "Use consistent gradient values from the design system. Prefer Tailwind gradient utilities",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "event-handling": {
+      "required": [
+        "@input",
+        "@change",
+        "@focus",
+        "@blur"
+      ],
+      "message": "Form components must implement standard event handlers",
+      "severity": "error",
+      "include": ["src/components/*Input.vue", "src/components/*Textarea.vue"]
+    },
+    "tailwind-layout": {
+      "patterns": [
+        "flex",
+        "grid",
+        "container",
+        "columns-",
+        "col-",
+        "row-",
+        "gap-",
+        "space-"
+      ],
+      "message": "Use Tailwind layout utilities for consistent spacing and alignment",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-typography": {
+      "patterns": [
+        "text-",
+        "font-",
+        "leading-",
+        "tracking-",
+        "whitespace-",
+        "break-"
+      ],
+      "message": "Use Tailwind typography utilities for consistent text styling",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-flexbox": {
+      "patterns": [
+        "flex",
+        "inline-flex",
+        "flex-row",
+        "flex-col",
+        "flex-wrap",
+        "flex-nowrap",
+        "items-",
+        "justify-",
+        "content-",
+        "self-"
+      ],
+      "message": "Use Tailwind flexbox utilities for layout and alignment",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-grid": {
+      "patterns": [
+        "grid",
+        "inline-grid",
+        "grid-cols-",
+        "grid-rows-",
+        "col-",
+        "row-",
+        "gap-",
+        "place-"
+      ],
+      "message": "Use Tailwind grid utilities for complex layouts",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-spacing": {
+      "patterns": [
+        "p-",
+        "m-",
+        "w-",
+        "h-",
+        "max-w-",
+        "max-h-",
+        "min-w-",
+        "min-h-"
+      ],
+      "message": "Use Tailwind spacing utilities for consistent sizing and spacing",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-backgrounds": {
+      "patterns": [
+        "bg-",
+        "bg-gradient-",
+        "bg-opacity-",
+        "from-",
+        "via-",
+        "to-"
+      ],
+      "message": "Use Tailwind background utilities for consistent styling",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-borders": {
+      "patterns": [
+        "border",
+        "border-",
+        "border-opacity-",
+        "rounded",
+        "rounded-"
+      ],
+      "message": "Use Tailwind border utilities for consistent border styling",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-effects": {
+      "patterns": [
+        "shadow",
+        "shadow-",
+        "opacity-",
+        "mix-blend-",
+        "filter",
+        "backdrop-"
+      ],
+      "message": "Use Tailwind effect utilities for consistent visual effects",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-transforms": {
+      "patterns": [
+        "transform",
+        "scale-",
+        "rotate-",
+        "translate-",
+        "skew-",
+        "origin-"
+      ],
+      "message": "Use Tailwind transform utilities for consistent transformations",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-interactivity": {
+      "patterns": [
+        "cursor-",
+        "select-",
+        "resize-",
+        "scroll-",
+        "snap-"
+      ],
+      "message": "Use Tailwind interactivity utilities for consistent user interactions",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-svg": {
+      "patterns": [
+        "fill-",
+        "stroke-",
+        "stroke-width-"
+      ],
+      "message": "Use Tailwind SVG utilities for consistent icon styling",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-screens": {
+      "patterns": [
+        "sm:",
+        "md:",
+        "lg:",
+        "xl:",
+        "2xl:"
+      ],
+      "message": "Use Tailwind screen utilities for responsive design",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "tailwind-states": {
+      "patterns": [
+        "hover:",
+        "focus:",
+        "focus-within:",
+        "focus-visible:",
+        "active:",
+        "visited:",
+        "target:",
+        "first:",
+        "last:",
+        "only:",
+        "odd:",
+        "even:",
+        "disabled:",
+        "checked:",
+        "required:",
+        "valid:",
+        "invalid:",
+        "in-range:",
+        "out-of-range:",
+        "placeholder-shown:",
+        "autofill:",
+        "read-only:",
+        "empty:",
+        "before:",
+        "after:",
+        "first-letter:",
+        "first-line:",
+        "marker:",
+        "selection:",
+        "file:",
+        "backdrop:",
+        "supports:",
+        "data-:",
+        "aria-:",
+        "group:",
+        "peer:",
+        "group-hover:",
+        "group-focus:",
+        "group-active:",
+        "group-disabled:",
+        "group-checked:",
+        "group-required:",
+        "group-valid:",
+        "group-invalid:",
+        "group-in-range:",
+        "group-out-of-range:",
+        "group-placeholder-shown:",
+        "group-autofill:",
+        "group-read-only:",
+        "group-empty:",
+        "peer-hover:",
+        "peer-focus:",
+        "peer-active:",
+        "peer-disabled:",
+        "peer-checked:",
+        "peer-required:",
+        "peer-valid:",
+        "peer-invalid:",
+        "peer-in-range:",
+        "peer-out-of-range:",
+        "peer-placeholder-shown:",
+        "peer-autofill:",
+        "peer-read-only:",
+        "peer-empty:"
+      ],
+      "message": "Use Tailwind state utilities for consistent interactive states",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "primevue-integration": {
+      "patterns": [
+        ":deep\\(\\.[a-z-]+\\).*@apply",
+        ":deep\\(\\.[a-z-]+\\).*\\{[^}]*\\}"
+      ],
+      "message": "Use :deep() selector with Tailwind utilities for PrimeVue component overrides",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "component-composition": {
+      "patterns": [
+        "computed\\(\\).*class",
+        ":class=\"\\{[^}]*\\}\""
+      ],
+      "message": "Use computed properties for dynamic class composition with Tailwind utilities",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    },
+    "performance-optimization": {
+      "patterns": [
+        "class=\"[^\"]*\\s+[^\"]*\"",
+        "class=\"[^\"]{50,}\""
+      ],
+      "message": "Consider breaking long class strings into computed properties for better maintainability",
+      "severity": "warning",
+      "include": ["src/components/*.vue"]
+    },
+    "semantic-classes": {
+      "patterns": [
+        "class=\"[^\"]*\\b(container|wrapper|content|header|footer|sidebar|main|section|article|aside|nav|menu|list|item|button|input|form|field|label|text|title|subtitle|description|caption|badge|card|modal|dialog|tooltip|popover|dropdown|select|checkbox|radio|switch|slider|progress|spinner|loader|icon|image|avatar|logo|brand|navigation|breadcrumb|pagination|tabs|accordion|carousel|gallery|table|chart|map|calendar|datepicker|timepicker|colorpicker|fileupload|richtext|markdown|code|terminal|console|debug|error|warning|info|success|danger|primary|secondary|accent|muted|light|dark|border|shadow|rounded|transparent|opacity|blur|filter|transform|transition|animation|hover|focus|active|disabled|loading|selected|checked|required|valid|invalid|readonly|placeholder|autofill|empty|first|last|only|odd|even|before|after|group|peer|responsive|mobile|tablet|desktop|print|screen|portrait|landscape|high|medium|low|small|medium|large|tiny|huge|thin|normal|bold|italic|underline|strikethrough|uppercase|lowercase|capitalize|justify|align|center|left|right|top|bottom|middle|start|end|between|around|evenly|stretch|auto|none|hidden|visible|block|inline|inline-block|flex|grid|table|contents|flow-root|list-item|inline-table|inline-flex|inline-grid)\\b[^\"]*\""
+      ],
+      "message": "Use semantic class names that describe the purpose rather than just appearance",
+      "severity": "info",
+      "include": ["src/components/*.vue"]
+    }
+  }
+} 
