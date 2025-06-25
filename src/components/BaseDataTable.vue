@@ -1,15 +1,60 @@
-<template>
-  <DataTable
-    :value="value"
-    :paginator="paginator"
-    :rows="rows"
-    :rowsPerPageOptions="rowsPerPageOptions"
-    :loading="loading"
-    :pt="passThrough"
-    @page="handlePage"
-    @sort="handleSort"
-    @filter="handleFilter"
-  >
+<!--
+@component BaseDataTable
+@description A comprehensive data table component with pagination, sorting, filtering, and customizable columns. Built on PrimeVue's DataTable with custom styling and enhanced functionality.
+
+@rationale Extends PrimeVue's DataTable component to leverage its robust data handling, accessibility features, and complex functionality (pagination, sorting, filtering) while applying custom Tailwind styling through PassThrough API for design system compliance.
+
+@props
+- value (any[]): Array of data objects to display in the table
+- columns (TableColumn[]): Column configuration array (optional, can use slot-based columns)
+- title (string): Optional title displayed in the table header
+- paginator (boolean): Whether to enable pagination controls
+- rows (number): Number of rows per page when pagination is enabled
+- rowsPerPageOptions (number[]): Available rows per page options
+- loading (boolean): Whether to show loading state
+- variant ('default' | 'striped'): Visual style variant
+
+@events
+- page (DataTablePageEvent): Emitted when page changes
+- sort (DataTableSortEvent): Emitted when column sorting changes  
+- filter (DataTableFilterEvent): Emitted when filters are applied
+
+@slots
+- header: Custom table header content (overrides title prop)
+- default: Column definitions using PrimeVue Column components
+- empty: Custom content when no data is available
+- footer: Custom table footer content
+
+@usage
+<BaseDataTable 
+  :value="tableData" 
+  :columns="columnConfig"
+  title="User Management"
+  :paginator="true"
+  :rows="10"
+  @page="handlePageChange"
+>
+  <template #empty>
+    <div class="text-center py-8">No users found</div>
+  </template>
+</BaseDataTable>
+-->
+  <template>
+    <DataTable
+      :value="value"
+      :paginator="paginator"
+      :rows="rows"
+      :rowsPerPageOptions="rowsPerPageOptions"
+      :loading="loading"
+      :pt="passThrough"
+      role="table"
+      :aria-label="title || 'Data table'"
+      :aria-busy="loading"
+      data-testid="base-data-table"
+      @page="handlePage"
+      @sort="handleSort"
+      @filter="handleFilter"
+    >
     <template #header v-if="$slots.header || title">
       <slot name="header">
         <h3 class="m-0 text-xl font-semibold text-text">{{ title }}</h3>
@@ -71,11 +116,27 @@ const props = withDefaults(defineProps<BaseDataTableProps>(), {
   variant: 'default',
 })
 
-const emit = defineEmits<{
-  (e: 'page', event: DataTablePageEvent): void
-  (e: 'sort', event: DataTableSortEvent): void
-  (e: 'filter', event: DataTableFilterEvent): void
-}>()
+export interface BaseDataTableEmits {
+  /** Emitted when page changes */
+  'page': [event: DataTablePageEvent]
+  /** Emitted when column sorting changes */
+  'sort': [event: DataTableSortEvent]
+  /** Emitted when filters are applied */
+  'filter': [event: DataTableFilterEvent]
+}
+
+export interface BaseDataTableSlots {
+  /** Custom table header content (overrides title prop) */
+  header?: () => any
+  /** Column definitions using PrimeVue Column components */
+  default?: () => any
+  /** Custom content when no data is available */
+  empty?: () => any
+  /** Custom table footer content */
+  footer?: () => any
+}
+
+const emit = defineEmits<BaseDataTableEmits>()
 
 const handlePage = (event: DataTablePageEvent) => emit('page', event)
 const handleSort = (event: DataTableSortEvent) => emit('sort', event)

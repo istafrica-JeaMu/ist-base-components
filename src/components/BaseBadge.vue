@@ -1,5 +1,38 @@
-<template>
-  <span :class="badgeClass">
+<!--
+@component BaseBadge
+@description A small notification badge component for displaying counts, status indicators, or simple notifications. Supports various sizes, colors, and can display icons or text content.
+
+@rationale Custom implementation using Tailwind CSS to provide precise control over badge styling and positioning. Built from scratch to ensure consistent design system compliance and optimal performance for small UI elements.
+
+@props
+- value (number | string): The content to display in the badge (numbers >99 show as "99+")
+- icon (string): PrimeIcon class name to display instead of text content
+- size ('small' | 'medium' | 'large'): Size variant of the badge
+- pill (boolean): Whether to use pill-shaped (fully rounded) styling
+- severity ('primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'accent'): Color scheme
+
+@events
+- No custom events emitted (display-only component)
+
+@slots
+- default: Custom content (used for large size when no icon is provided)
+
+@usage
+<!-- Number badge -->
+<BaseBadge :value="42" severity="danger" size="large" />
+
+<!-- Icon badge -->
+<BaseBadge icon="pi pi-check" severity="success" size="medium" />
+
+<!-- Dot indicator -->
+<BaseBadge severity="primary" size="small" />
+-->
+  <template>
+    <span 
+      :class="badgeClass"
+      data-testid="base-badge"
+      :aria-label="value ? `Badge with value ${value}` : 'Badge indicator'"
+    >
     <i v-if="icon" :class="icon" />
     <slot v-else-if="props.size === 'large'">{{ displayValue }}</slot>
   </span>
@@ -14,6 +47,15 @@ export interface BaseBadgeProps {
   size?: 'small' | 'medium' | 'large';
   pill?: boolean;
   severity?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'accent';
+}
+
+export interface BaseBadgeEmits {
+  // No custom events emitted - display-only component
+}
+
+export interface BaseBadgeSlots {
+  /** Custom content (used for large size when no icon is provided) */
+  default?: () => any
 }
 
 const props = withDefaults(defineProps<BaseBadgeProps>(), {

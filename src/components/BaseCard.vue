@@ -1,5 +1,42 @@
+<!--
+@component BaseCard
+@description A flexible card container component with header, body, and footer sections. Provides consistent styling and layout structure for content organization with support for custom padding and multiple content slots.
+
+@rationale Extends PrimeVue's Card component to leverage its structural foundation while applying custom Tailwind styling through PassThrough API. This approach maintains accessibility and semantic HTML structure while achieving pixel-perfect design system compliance.
+
+@props
+- title (string): Main heading text displayed in the card header
+- subtitle (string): Secondary text displayed below the title in the header
+- padding ('none' | 'small' | 'normal' | 'large'): Controls internal padding of the card body content
+
+@events
+- No custom events emitted (uses standard DOM events)
+
+@slots
+- header: Custom header content (overrides title/subtitle when used)
+- default: Main card body content
+- actions: Action buttons or controls displayed in the header
+- footer: Footer content with pre-styled button container
+
+@usage
+<BaseCard title="Card Title" subtitle="Card description" padding="normal">
+  <template #actions>
+    <BaseButton size="small">Edit</BaseButton>
+  </template>
+  <p>Main card content goes here</p>
+  <template #footer>
+    <BaseButton variant="secondary">Cancel</BaseButton>
+    <BaseButton variant="primary">Save</BaseButton>
+  </template>
+</BaseCard>
+-->
 <template>
-  <Card :pt="passThrough">
+  <Card 
+    :pt="passThrough"
+    role="region"
+    :aria-label="ariaLabel || title || 'Card content'"
+    data-testid="base-card"
+  >
     <template #header>
       <div v-if="$slots.header || title" class="flex justify-between items-center w-full">
         <div>
@@ -34,6 +71,23 @@ export interface BaseCardProps {
   title?: string
   subtitle?: string
   padding?: 'none' | 'small' | 'normal' | 'large'
+  /** ARIA label for accessibility */
+  ariaLabel?: string
+}
+
+export interface BaseCardEmits {
+  // No custom events emitted - uses standard DOM events
+}
+
+export interface BaseCardSlots {
+  /** Custom header content (overrides title/subtitle when used) */
+  header?: () => any
+  /** Main card body content */
+  default?: () => any
+  /** Action buttons or controls displayed in the header */
+  actions?: () => any
+  /** Footer content with pre-styled button container */
+  footer?: () => any
 }
 
 const props = withDefaults(defineProps<BaseCardProps>(), {

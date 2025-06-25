@@ -1,5 +1,49 @@
-<template>
-  <button :disabled="disabled || loading" :class="buttonClass" class="relative" @click="handleClick">
+<!--
+@component BaseIconButton
+@description A compact button component designed specifically for icon-only actions. Provides consistent sizing, styling, and interaction patterns for toolbar buttons, action buttons, and navigation elements.
+
+@rationale Custom implementation using native HTML button element to provide optimal sizing and styling for icon buttons while maintaining accessibility. Built from scratch rather than extending PrimeVue to avoid CSS conflicts and ensure precise control over icon button styling.
+
+@props
+- icon (string): PrimeIcon class name to display (e.g., 'pi pi-search')
+- badge (boolean | string | number): Badge indicator - true for dot, string/number for content
+- size ('small' | 'normal' | 'large'): Button size variant
+- disabled (boolean): Whether the button is disabled
+- loading (boolean): Whether the button shows loading spinner
+- variant ('default' | 'primary' | 'secondary' | 'text'): Visual style variant
+
+@events
+- click (MouseEvent): Emitted when button is clicked (not emitted when disabled or loading)
+
+@slots
+- No slots (icon-only button)
+
+@usage
+<BaseIconButton 
+  icon="pi pi-search" 
+  size="normal"
+  variant="primary"
+  :disabled="false"
+  @click="handleSearch" 
+/>
+
+<!-- With badge -->
+<BaseIconButton 
+  icon="pi pi-bell" 
+  :badge="notificationCount > 0 ? notificationCount : true"
+  @click="showNotifications" 
+/>
+-->
+  <template>
+    <button 
+      :disabled="disabled || loading" 
+      :class="buttonClass" 
+      class="relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" 
+      :aria-label="ariaLabel || `Icon button`"
+      :tabindex="disabled ? -1 : tabindex"
+      data-testid="base-icon-button"
+      @click="handleClick"
+    >
     <svg v-if="loading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -26,6 +70,10 @@ export interface BaseIconButtonProps {
   disabled?: boolean;
   loading?: boolean;
   variant?: 'default' | 'primary' | 'secondary' | 'text';
+  /** ARIA label for accessibility (required for icon-only buttons) */
+  ariaLabel?: string;
+  /** Tab index for keyboard navigation */
+  tabindex?: number;
 }
 
 const props = withDefaults(defineProps<BaseIconButtonProps>(), {
@@ -33,14 +81,22 @@ const props = withDefaults(defineProps<BaseIconButtonProps>(), {
   disabled: false,
   loading: false,
   variant: 'default',
+  tabindex: 0,
 });
 
-const emit = defineEmits<{
-  (e: 'click', event: MouseEvent): void;
-}>();
+export interface BaseIconButtonEmits {
+  /** Emitted when button is clicked (not emitted when disabled or loading) */
+  'click': [event: MouseEvent]
+}
 
-const buttonClass = computed(() => {
-  const baseClasses = 'p-button-unstyled inline-flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 disabled:cursor-not-allowed';
+export interface BaseIconButtonSlots {
+  // No slots - icon-only button
+}
+
+const emit = defineEmits<BaseIconButtonEmits>();
+
+  const buttonClass = computed(() => {
+    const baseClasses = 'p-button-unstyled inline-flex items-center justify-center rounded-lg transition-all duration-200 disabled:cursor-not-allowed';
 
   const variantClasses = {
     default: 'bg-white text-text border border-border hover:bg-accent/10 active:bg-accent/20 disabled:bg-light/30 disabled:text-muted',

@@ -1,5 +1,32 @@
-<template>
-  <div class="flex flex-wrap gap-2">
+<!--
+@component BaseChipCluster
+@description A multi-select chip cluster component for displaying and managing multiple selectable options as chips. Allows users to toggle selection states by clicking chips.
+
+@rationale Custom implementation using BaseChip components to create a cohesive selection interface. Built with Vue's reactivity system to handle selection state and emit changes for v-model binding.
+
+@props
+- modelValue (string[]): Array of currently selected chip values (v-model support)
+- options (string[]): Array of available options to display as chips
+
+@events
+- update:modelValue (string[]): Emitted when selection changes for v-model binding
+
+@slots
+- No custom slots (uses BaseChip components for rendering)
+
+@usage
+<BaseChipCluster 
+  v-model="selectedTags"
+  :options="['JavaScript', 'Vue', 'TypeScript', 'CSS']"
+/>
+-->
+  <template>
+    <div 
+      class="flex flex-wrap gap-2"
+      role="group"
+      aria-label="Selectable chip options"
+      data-testid="base-chip-cluster"
+    >
     <BaseChip
       v-for="option in options"
       :key="option"

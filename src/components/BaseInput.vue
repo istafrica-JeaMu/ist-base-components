@@ -14,28 +14,32 @@
 - `iconPosition` ('left' | 'right'): The position of the icon.
 - `disabled` (boolean): Disables the input.
 -->
-<template>
-  <div class="flex flex-col gap-1 w-full">
+  <template>
+    <div class="flex flex-col gap-1 w-full" data-testid="base-input">
     <label v-if="label" :for="inputId" class="text-sm font-medium text-text">
       {{ label }}
     </label>
     <IconField :iconPosition="iconPosition">
       <InputIcon v-if="icon" class="pi" :class="icon" @click="emit('icon-click')" />
-      <InputText
-        :id="inputId"
-        v-model="inputValue"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :class="inputClass"
-        :aria-invalid="invalid"
-      />
+              <InputText
+          :id="inputId"
+          v-model="inputValue"
+          :placeholder="placeholder"
+          :disabled="disabled"
+          :class="inputClass"
+          :aria-invalid="invalid"
+          :aria-label="ariaLabel || label"
+          :aria-required="required"
+          :aria-describedby="errorMessage && invalid ? `${inputId}-error` : (helpText ? `${inputId}-help` : undefined)"
+          data-testid="base-input-field"
+        />
     </IconField>
-    <small v-if="errorMessage && invalid" class="text-danger text-xs">
-      {{ errorMessage }}
-    </small>
-    <small v-else-if="helpText" class="text-muted text-xs">
-      {{ helpText }}
-    </small>
+          <small v-if="errorMessage && invalid" :id="`${inputId}-error`" class="text-danger text-xs">
+        {{ errorMessage }}
+      </small>
+      <small v-else-if="helpText" :id="`${inputId}-help`" class="text-muted text-xs">
+        {{ helpText }}
+      </small>
   </div>
 </template>
 
@@ -55,6 +59,10 @@ export interface BaseInputProps {
   invalid?: boolean
   errorMessage?: string
   helpText?: string
+  /** ARIA label for accessibility */
+  ariaLabel?: string
+  /** Required field indicator */
+  required?: boolean
 }
 
 const props = withDefaults(defineProps<BaseInputProps>(), {
@@ -77,7 +85,7 @@ const inputValue = computed({
 })
 
 const inputClass = computed(() => [
-  'w-full h-input text-sm text-text placeholder:text-muted rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent',
+  'w-full h-input text-sm text-text placeholder:text-muted rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
   'border',
   {
     'border-border focus:border-accent': !props.invalid,

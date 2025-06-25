@@ -1,8 +1,31 @@
 <template>
   <!--
-    BaseChip component
-    A customizable chip component that extends PrimeVue's Chip, designed to match the project's Figma specifications.
-    It can display a label, an optional icon, and can be removable.
+@component BaseChip
+@description A customizable chip component for displaying tags, labels, or removable items. Extends PrimeVue's Chip with custom styling to match design specifications.
+
+@rationale Extends PrimeVue's Chip component to leverage its built-in functionality (removable behavior, icon support) while applying custom Tailwind styling for design system compliance. The PassThrough API isn't needed here as the styling works well with scoped CSS overrides.
+
+@props
+- label (string): The text content to display inside the chip
+- icon (string): PrimeIcon class name for optional left-side icon
+- removable (boolean): Whether the chip displays a remove button
+- variant ('default' | 'accent'): Visual style variant
+
+@events
+- remove: Emitted when the remove button is clicked (only when removable=true)
+
+@slots
+- No custom slots (uses PrimeVue Chip's built-in content structure)
+
+@usage
+<!-- Basic chip -->
+<BaseChip label="JavaScript" variant="accent" />
+
+<!-- Chip with icon -->
+<BaseChip label="User" icon="pi pi-user" />
+
+<!-- Removable chip -->
+<BaseChip label="Tag" :removable="true" @remove="onRemove" />
   -->
   <Chip
     :label="label"

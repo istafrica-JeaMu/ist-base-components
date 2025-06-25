@@ -25,8 +25,15 @@
   Click Me
 </BaseButton>
 -->
-<template>
-  <button :disabled="disabled || loading" :class="buttonClass" @click="handleClick">
+  <template>
+    <button 
+      :disabled="disabled || loading" 
+      :class="buttonClass" 
+      :aria-label="ariaLabel || label || 'Button'"
+      :aria-busy="loading"
+      data-testid="base-button"
+      @click="handleClick"
+    >
     <i v-if="loading" class="absolute pi pi-spinner animate-spin text-lg"></i>
     <span class="inline-flex items-center justify-center" :class="{ 'opacity-0': loading }">
       <i v-if="leftIcon" :class="[leftIcon, 'text-base', { 'mr-2': $slots.default || badge || label }]"></i>
@@ -61,6 +68,8 @@ export interface BaseButtonProps {
   disabled?: boolean
   loading?: boolean
   variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'hero'
+  /** ARIA label for accessibility */
+  ariaLabel?: string
 }
 
 const props = withDefaults(defineProps<BaseButtonProps>(), {
@@ -75,7 +84,7 @@ const emit = defineEmits<{
 }>()
 
 const buttonClass = computed(() => {
-  const baseClasses = 'relative inline-flex items-center justify-center font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200'
+  const baseClasses = 'relative inline-flex items-center justify-center font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-all duration-200'
   
   const variantClasses = {
     default: 'bg-white text-text border-border border hover:bg-light/50 active:bg-border disabled:bg-light/30 disabled:text-muted disabled:cursor-not-allowed',

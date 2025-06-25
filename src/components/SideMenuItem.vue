@@ -1,14 +1,47 @@
 <!--
-  SideMenuItem Component
-  A recursive component for rendering menu items in a hierarchical menu structure.
-  It is designed to be used internally by BaseSideMenu.
+@component SideMenuItem
+@description A recursive component for rendering individual menu items in a hierarchical navigation structure. Handles nested menu items, expansion states, and active item highlighting. Designed to be used internally by BaseSideMenu.
+
+@rationale Custom implementation using recursive Vue components to handle complex nested menu structures with proper state management for expansion and active states. Built with Tailwind CSS for consistent styling and smooth animations.
+
+@props
+- item (MenuItem): The menu item object containing id, label, icon, path, and optional children
+- level (number): The nesting level for proper indentation and styling
+- collapsed (boolean): Whether the parent menu is in collapsed state
+- activeItemId (string | null): The ID of the currently active menu item
+- expandedItems (string[]): Array of menu item IDs that are currently expanded
+
+@events
+- item-click (MenuItem): Emitted when a menu item is clicked, bubbles up to parent menu
+
+@slots
+- item: Custom template for menu item rendering with item data and state
+
+@usage
+<!-- Used internally by BaseSideMenu - not typically used directly -->
+<SideMenuItem
+  :item="menuItem"
+  :level="0"
+  :collapsed="false"
+  :active-item-id="activeId"
+  :expanded-items="expandedIds"
+  @item-click="handleItemClick"
+/>
 -->
-<template>
-  <li>
-    <div
-      class="side-menu-item-content"
-      @click.prevent="handleClick"
-    >
+  <template>
+    <li>
+      <div
+        class="side-menu-item-content focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        role="menuitem"
+        :aria-label="item.label"
+        :aria-expanded="hasChildren ? isExpanded : undefined"
+        :aria-current="isActive ? 'page' : undefined"
+        :data-testid="`side-menu-item-${item.id}`"
+        tabindex="0"
+        @click.prevent="handleClick"
+        @keydown.enter.prevent="handleClick"
+        @keydown.space.prevent="handleClick"
+      >
       <slot
         name="item"
         :item="item"
@@ -28,7 +61,12 @@
         </a>
       </slot>
     </div>
-    <ul v-if="hasChildren && isExpanded" class="pl-4">
+          <ul 
+        v-if="hasChildren && isExpanded" 
+        class="pl-4"
+        role="menu"
+        :aria-label="`${item.label} submenu`"
+      >
       <SideMenuItem
         v-for="child in item.children"
         :key="child.id"
@@ -39,8 +77,8 @@
         :expanded-items="expandedItems"
         @item-click="(clickedItem) => $emit('item-click', clickedItem)"
       >
-        <template #item="slotProps">
-          <slot name="item" v-bind="(slotProps as any)" />
+        <template #item="slotProps: any">
+          <slot name="item" v-bind="slotProps" />
         </template>
       </SideMenuItem>
     </ul>
@@ -59,8 +97,15 @@ export interface SideMenuItemProps {
   activeItemId: string | null;
   expandedItems: string[];
 }
+
 export interface SideMenuItemEmits {
-  (e: 'item-click', item: MenuItem): void;
+  /** Emitted when a menu item is clicked */
+  'item-click': [item: MenuItem]
+}
+
+export interface SideMenuItemSlots {
+  /** Custom template for menu item rendering with item data and state */
+  item?: (props: { item: MenuItem; active: boolean; expanded: boolean; level: number }) => any
 }
 
 const props = defineProps<SideMenuItemProps>()

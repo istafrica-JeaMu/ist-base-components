@@ -114,3 +114,40 @@ export type {
   BaseCheckboxEmits,
   BaseCheckboxSlots
 } from './components/BaseCheckbox.vue'
+
+export type {
+  BaseCardProps,
+  BaseCardEmits,
+  BaseCardSlots
+} from './components/BaseCard.vue'
+
+export type {
+  BaseHeaderProps,
+  BaseHeaderEmits,
+  BaseHeaderSlots
+} from './components/BaseHeader.vue'
+
+export type {
+  BaseIconButtonProps,
+  BaseIconButtonEmits,
+  BaseIconButtonSlots
+} from './components/BaseIconButton.vue'
+
+export type {
+  BaseBadgeProps,
+  BaseBadgeEmits,
+  BaseBadgeSlots
+} from './components/BaseBadge.vue'
+
+export type {
+  TableColumn,
+  BaseDataTableProps,
+  BaseDataTableEmits,
+  BaseDataTableSlots
+} from './components/BaseDataTable.vue'
+
+export type {
+  SideMenuItemProps,
+  SideMenuItemEmits,
+  SideMenuItemSlots
+} from './components/SideMenuItem.vue'
