@@ -7,9 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
@@ -32,7 +29,6 @@ dist-ssr
 
 # Build outputs
 dist-demo/
-dist/
 
 # TypeScript
 *.tsbuildinfo
@@ -45,7 +41,6 @@ coverage
 .nyc_output
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # Optional npm cache directory
@@ -78,8 +73,6 @@ jspm_packages/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
-
 # Storybook build outputs
 .out
 .storybook-out
