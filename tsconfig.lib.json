@@ -3,19 +3,35 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
+    "emitDeclarationOnly": false,
     "outDir": "dist",
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "strictFunctionTypes": false,
-    "skipLibCheck": true
+    "rootDir": "src",
+    "composite": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": false
   },
   "include": [
-    "src/**/*"
+    "src/index.ts",
+    "src/components/**/*.vue",
+    "src/components/**/*.ts",
+    "src/utilities.css"
   ],
   "exclude": [
     "src/main.ts",
     "src/App.vue",
     "src/views/**/*",
-    "examples/**/*"
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "tests/**/*",
+    "examples/**/*",
+    "node_modules",
+    "dist"
   ]
 } 
