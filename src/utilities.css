@@ -1,0 +1,117 @@
+/* IST Base Components - Custom Utility Classes */
+/* These utility classes are always available to consuming projects */
+
+/* PRIMARY COLORS */
+.bg-primary { background-color: #667eea !important; }
+.text-primary { color: #667eea !important; }
+.border-primary { border-color: #667eea !important; }
+.bg-primary-dark { background-color: #5a67d8 !important; }
+.bg-primary-darker { background-color: #4c51bf !important; }
+
+/* SECONDARY COLORS */
+.bg-secondary { background-color: #6c757d !important; }
+.text-secondary { color: #6c757d !important; }
+.border-secondary { border-color: #6c757d !important; }
+
+/* SUCCESS COLORS */
+.bg-success { background-color: #28a745 !important; }
+.text-success { color: #28a745 !important; }
+.border-success { border-color: #28a745 !important; }
+
+/* WARNING COLORS */
+.bg-warning { background-color: #ffc107 !important; }
+.text-warning { color: #ffc107 !important; }
+.border-warning { border-color: #ffc107 !important; }
+
+/* DANGER COLORS */
+.bg-danger { background-color: #dc3545 !important; }
+.text-danger { color: #dc3545 !important; }
+.border-danger { border-color: #dc3545 !important; }
+
+/* HERO COLORS */
+.bg-hero { background-color: #4F46E5 !important; }
+.text-hero { color: #4F46E5 !important; }
+.border-hero { border-color: #4F46E5 !important; }
+
+/* LIGHT/DARK COLORS */
+.bg-light { background-color: #f8f9fa !important; }
+.text-light { color: #f8f9fa !important; }
+.border-light { border-color: #f8f9fa !important; }
+.bg-dark { background-color: #212529 !important; }
+.text-dark { color: #212529 !important; }
+.border-dark { border-color: #212529 !important; }
+
+/* ACCENT COLORS */
+.bg-accent { background-color: #FCD34D !important; }
+.text-accent { color: #FCD34D !important; }
+.border-accent { border-color: #FCD34D !important; }
+.ring-accent { --tw-ring-color: #FCD34D !important; }
+
+/* TEXT/BORDER/MUTED COLORS */
+.text-text { color: #495057 !important; }
+.text-muted { color: #6c757d !important; }
+.border-border { border-color: #e9ecef !important; }
+
+/* INFO COLORS */
+.bg-info-light { background-color: #E0F2FE !important; }
+.text-info { color: #0369a1 !important; }
+
+/* MESSAGE COLORS */
+.bg-message-success-light { background-color: #F0FDF4 !important; }
+.text-message-success-dark { color: #16A34A !important; }
+.border-message-success-border { border-color: #86EFAC !important; }
+.bg-message-info-light { background-color: #F0F9FF !important; }
+.text-message-info-dark { color: #0284C7 !important; }
+.border-message-info-border { border-color: #7DD3FC !important; }
+.bg-message-warning-light { background-color: #FFFBEB !important; }
+.text-message-warning-dark { color: #D97706 !important; }
+.border-message-warning-border { border-color: #FDBA74 !important; }
+.bg-message-danger-light { background-color: #FEF2F2 !important; }
+.text-message-danger-dark { color: #DC2626 !important; }
+.border-message-danger-border { border-color: #FCA5A5 !important; }
+
+/* OPACITY VARIANTS */
+.bg-primary\/50 { background-color: rgba(102, 126, 234, 0.5) !important; }
+.bg-primary\/90 { background-color: rgba(102, 126, 234, 0.9) !important; }
+.bg-secondary\/50 { background-color: rgba(108, 117, 125, 0.5) !important; }
+.bg-success\/50 { background-color: rgba(40, 167, 69, 0.5) !important; }
+.bg-warning\/50 { background-color: rgba(255, 193, 7, 0.5) !important; }
+.bg-danger\/50 { background-color: rgba(220, 53, 69, 0.5) !important; }
+.bg-hero\/70 { background-color: rgba(79, 70, 229, 0.7) !important; }
+.bg-hero\/90 { background-color: rgba(79, 70, 229, 0.9) !important; }
+.bg-light\/30 { background-color: rgba(248, 249, 250, 0.3) !important; }
+.bg-light\/50 { background-color: rgba(248, 249, 250, 0.5) !important; }
+.bg-light\/60 { background-color: rgba(248, 249, 250, 0.6) !important; }
+.bg-accent\/5 { background-color: rgba(252, 211, 77, 0.05) !important; }
+.bg-accent\/10 { background-color: rgba(252, 211, 77, 0.1) !important; }
+.bg-accent\/20 { background-color: rgba(252, 211, 77, 0.2) !important; }
+.bg-accent\/30 { background-color: rgba(252, 211, 77, 0.3) !important; }
+.bg-accent\/50 { background-color: rgba(252, 211, 77, 0.5) !important; }
+.text-dark\/80 { color: rgba(33, 37, 41, 0.8) !important; }
+.text-dark\/60 { color: rgba(33, 37, 41, 0.6) !important; }
+.border-accent\/20 { border-color: rgba(252, 211, 77, 0.2) !important; }
+
+/* STATE VARIANTS */
+.hover\:bg-primary-dark:hover { background-color: #5a67d8 !important; }
+.hover\:bg-hero\/90:hover { background-color: rgba(79, 70, 229, 0.9) !important; }
+.hover\:bg-light\/50:hover { background-color: rgba(248, 249, 250, 0.5) !important; }
+.hover\:bg-accent\/5:hover { background-color: rgba(252, 211, 77, 0.05) !important; }
+.hover\:border-accent\/20:hover { border-color: rgba(252, 211, 77, 0.2) !important; }
+.hover\:text-primary:hover { color: #667eea !important; }
+.hover\:text-dark:hover { color: #212529 !important; }
+.focus\:ring-primary\/50:focus { --tw-ring-color: rgba(102, 126, 234, 0.5) !important; }
+.focus\:ring-secondary\/50:focus { --tw-ring-color: rgba(108, 117, 125, 0.5) !important; }
+.focus\:ring-success\/50:focus { --tw-ring-color: rgba(40, 167, 69, 0.5) !important; }
+.focus\:ring-warning\/50:focus { --tw-ring-color: rgba(255, 193, 7, 0.5) !important; }
+.focus\:ring-danger\/50:focus { --tw-ring-color: rgba(220, 53, 69, 0.5) !important; }
+.focus\:border-primary:focus { border-color: #667eea !important; }
+.focus\:border-danger:focus { border-color: #dc3545 !important; }
+.active\:bg-primary-darker:active { background-color: #4c51bf !important; }
+.active\:bg-border:active { background-color: #e9ecef !important; }
+.disabled\:text-muted:disabled { color: #6c757d !important; }
+.disabled\:bg-light\/30:disabled { background-color: rgba(248, 249, 250, 0.3) !important; }
+
+/* COMPONENT DIMENSIONS */
+.h-input { height: 34px !important; }
+.h-header { height: 64px !important; }
+.w-70 { width: 280px !important; } 

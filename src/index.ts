@@ -3,6 +3,10 @@
 
 // Library installation function
 import type { App } from 'vue'
+
+// Import custom utilities CSS to ensure they are included in the build
+import './utilities.css'
+
 import BaseAccordion from './components/BaseAccordion.vue'
 import BaseBadge from './components/BaseBadge.vue'
 import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue'
