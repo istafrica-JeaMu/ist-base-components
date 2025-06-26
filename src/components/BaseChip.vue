@@ -29,7 +29,7 @@
   -->
   <Chip
     :label="label"
-    :icon="icon"
+    :icon="icon || undefined"
     :removable="removable"
     :class="chipClass"
     :aria-label="removable ? `${label} chip, removable` : `${label} chip`"

@@ -121,7 +121,7 @@
           </div>
           
           <!-- Empty state -->
-          <div v-if="options.length === 0" class="px-3 py-2 text-sm text-muted text-center italic">
+          <div v-if="(options || []).length === 0" class="px-3 py-2 text-sm text-muted text-center italic">
             No options available
           </div>
         </div>
@@ -233,7 +233,7 @@ const localValue = computed({
 const selectedOption = computed(() => {
   if (props.modelValue === undefined || props.modelValue === null) return null
   
-  return props.options.find(option => {
+  return (props.options || []).find(option => {
     const optionVal = getOptionValue(option)
     return optionVal === props.modelValue
   }) || null

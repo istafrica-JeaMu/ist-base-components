@@ -23,8 +23,8 @@
     <Textarea
       :id="textareaId"
       v-model="textareaValue"
-      :placeholder="placeholder"
-      :disabled="disabled"
+      :placeholder="placeholder || undefined"
+      :disabled="disabled || undefined"
       :class="textareaClass"
       :aria-invalid="invalid"
       :aria-label="ariaLabel || label"

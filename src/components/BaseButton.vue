@@ -35,9 +35,9 @@
 <template>
   <button
     :class="buttonClasses"
-    :disabled="disabled || loading"
+    :disabled="(disabled || loading) || undefined"
     :aria-label="computedAriaLabel"
-    :aria-busy="loading"
+    :aria-busy="loading || undefined"
     data-testid="base-button"
     :style="customStyle"
     @click="handleClick"
