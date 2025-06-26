@@ -1,0 +1,13 @@
+import { Meta, StoryObj } from '@storybook/vue3';
+import { default as BaseButton } from './BaseButton.vue';
+declare const meta: Meta<typeof BaseButton>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const AllVariants: Story;
+export declare const AllSizes: Story;
+export declare const WithIcons: Story;
+export declare const WithBadges: Story;
+export declare const LoadingStates: Story;
+export declare const Interactive: Story;
+export declare const Accessibility: Story;

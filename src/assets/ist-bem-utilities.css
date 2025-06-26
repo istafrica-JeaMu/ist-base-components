@@ -1,0 +1,315 @@
+/* IST Base Components - BEM Methodology CSS Utilities */
+/* These utility classes use IST- prefixes to prevent conflicts with consuming projects */
+
+@layer components {
+  /* === BLOCK LEVEL COMPONENTS === */
+
+  /* IST Button Component */
+  .ist-button {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 inline-flex items-center justify-center;
+  }
+
+  .ist-button--primary {
+    @apply ist-button bg-primary text-white hover:bg-primary/90 focus:ring-primary/50;
+  }
+
+  .ist-button--secondary {
+    @apply ist-button bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary/50;
+  }
+
+  .ist-button--success {
+    @apply ist-button bg-success text-white hover:bg-success/90 focus:ring-success/50;
+  }
+
+  .ist-button--warning {
+    @apply ist-button bg-warning text-dark hover:bg-warning/90 focus:ring-warning/50;
+  }
+
+  .ist-button--danger {
+    @apply ist-button bg-danger text-white hover:bg-danger/90 focus:ring-danger/50;
+  }
+
+  .ist-button--small {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .ist-button--normal {
+    @apply px-4 py-2 text-base;
+  }
+
+  .ist-button--large {
+    @apply px-6 py-3 text-lg;
+  }
+
+  /* IST Input Component */
+  .ist-input {
+    @apply w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 bg-white text-text;
+  }
+
+  .ist-input--error {
+    @apply border-danger focus:ring-danger/50 focus:border-danger;
+  }
+
+  /* IST Card Component */
+  .ist-card {
+    @apply bg-white rounded-lg shadow-md border border-border;
+  }
+
+  .ist-card--primary {
+    @apply ist-card border-l-4 border-primary;
+  }
+
+  /* IST Header Component */
+  .ist-header {
+    @apply bg-white border-b border-border px-6 py-4 flex items-center justify-between;
+  }
+
+  /* IST Table Component */
+  .ist-table__header {
+    @apply bg-light text-dark font-semibold px-4 py-3 border-b border-border;
+  }
+
+  .ist-table__cell {
+    @apply px-4 py-3 border-b border-border text-text;
+  }
+
+  /* IST Dropdown Component */
+  .ist-dropdown {
+    @apply w-full bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+
+  .ist-dropdown__item {
+    @apply px-4 py-2 hover:bg-accent/20 hover:text-dark cursor-pointer transition-all duration-200;
+  }
+
+  .ist-dropdown__item--selected {
+    @apply bg-accent text-dark;
+  }
+
+  /* IST Side Menu Component */
+  .ist-sidemenu__item {
+    @apply flex items-center px-4 py-3 text-text hover:bg-accent/20 hover:text-dark transition-all duration-200 cursor-pointer;
+  }
+
+  .ist-sidemenu__item--active {
+    @apply bg-accent text-dark border-r-2 border-accent;
+  }
+
+  .ist-sidemenu__submenu {
+    @apply pl-8 bg-light/50;
+  }
+
+  /* IST Gallery Component */
+  .ist-gallery__section {
+    @apply mb-12;
+  }
+
+  .ist-gallery__title {
+    @apply text-2xl font-semibold text-dark mb-4;
+  }
+
+  .ist-gallery__subtitle {
+    @apply text-lg font-medium text-dark mt-6 mb-3;
+  }
+
+  /* IST Checkbox Component */
+  .ist-checkbox {
+    @apply flex flex-col;
+  }
+
+  /* IST Side Menu Item Component */
+  .ist-side-menu__item {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent;
+  }
+
+  /* === UTILITY COMPONENTS === */
+
+  /* IST Scrollbar Utility */
+  .ist-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .ist-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .ist-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(252, 211, 77, 0.3);
+    border-radius: 2px;
+  }
+
+  .ist-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(252, 211, 77, 0.5);
+  }
+
+  /* IST Utilities Force Include (renamed from ist-force-include) */
+  .ist-utilities-force {
+    /* This class is never used but forces all utilities to be included */
+    display: none !important;
+    
+    /* Force include IST design system colors */
+    background-color: theme('colors.primary');
+    color: theme('colors.primary');
+    border-color: theme('colors.primary');
+    background-color: theme('colors.secondary');
+    color: theme('colors.secondary');
+    border-color: theme('colors.secondary');
+    background-color: theme('colors.success');
+    color: theme('colors.success');
+    border-color: theme('colors.success');
+    background-color: theme('colors.warning');
+    color: theme('colors.warning');
+    border-color: theme('colors.warning');
+    background-color: theme('colors.danger');
+    color: theme('colors.danger');
+    border-color: theme('colors.danger');
+    background-color: theme('colors.hero');
+    color: theme('colors.hero');
+    border-color: theme('colors.hero');
+    background-color: theme('colors.light');
+    color: theme('colors.light');
+    border-color: theme('colors.light');
+    background-color: theme('colors.dark');
+    color: theme('colors.dark');
+    border-color: theme('colors.dark');
+    background-color: theme('colors.accent');
+    color: theme('colors.accent');
+    border-color: theme('colors.accent');
+    color: theme('colors.text');
+    color: theme('colors.muted');
+    border-color: theme('colors.border');
+    background-color: theme('colors.info-light');
+    color: theme('colors.info');
+    height: theme('height.input');
+    height: theme('height.header');
+    width: theme('width.sidemenu-expanded');
+    width: theme('width.sidemenu-collapsed');
+  }
+
+  /* === BACKWARD COMPATIBILITY SECTION === */
+  /* Maintain old class names for backward compatibility during transition */
+  /* These will be removed in the next major version */
+
+  /* Legacy Button Classes (DEPRECATED - use ist-button instead) */
+  .btn-base {
+    @apply ist-button;
+  }
+
+  .btn-primary {
+    @apply ist-button--primary;
+  }
+
+  .btn-secondary {
+    @apply ist-button--secondary;
+  }
+
+  .btn-success {
+    @apply ist-button--success;
+  }
+
+  .btn-warning {
+    @apply ist-button--warning;
+  }
+
+  .btn-danger {
+    @apply ist-button--danger;
+  }
+
+  .btn-small {
+    @apply ist-button--small;
+  }
+
+  .btn-normal {
+    @apply ist-button--normal;
+  }
+
+  .btn-large {
+    @apply ist-button--large;
+  }
+
+  /* Legacy Input Classes (DEPRECATED - use ist-input instead) */
+  .input-base {
+    @apply ist-input;
+  }
+
+  .input-error {
+    @apply ist-input--error;
+  }
+
+  /* Legacy Card Classes (DEPRECATED - use ist-card instead) */
+  .card-base {
+    @apply ist-card;
+  }
+
+  .card-primary {
+    @apply ist-card--primary;
+  }
+
+  /* Legacy Header Classes (DEPRECATED - use ist-header instead) */
+  .header-base {
+    @apply ist-header;
+  }
+
+  /* Legacy Table Classes (DEPRECATED - use ist-table instead) */
+  .table-header {
+    @apply ist-table__header;
+  }
+
+  .table-cell {
+    @apply ist-table__cell;
+  }
+
+  /* Legacy Dropdown Classes (DEPRECATED - use ist-dropdown instead) */
+  .dropdown-base {
+    @apply ist-dropdown;
+  }
+
+  .dropdown-item {
+    @apply ist-dropdown__item;
+  }
+
+  .dropdown-item-selected {
+    @apply ist-dropdown__item--selected;
+  }
+
+  /* Legacy Side Menu Classes (DEPRECATED - use ist-sidemenu instead) */
+  .sidemenu-item {
+    @apply ist-sidemenu__item;
+  }
+
+  .sidemenu-item-active {
+    @apply ist-sidemenu__item--active;
+  }
+
+  .sidemenu-submenu {
+    @apply ist-sidemenu__submenu;
+  }
+
+  /* Legacy Gallery Classes (DEPRECATED - use ist-gallery instead) */
+  .gallery-section {
+    @apply ist-gallery__section;
+  }
+
+  .gallery-section-title {
+    @apply ist-gallery__title;
+  }
+
+  .gallery-subsection-title {
+    @apply ist-gallery__subtitle;
+  }
+
+  /* Legacy Checkbox Classes (DEPRECATED - use ist-checkbox instead) */
+  .base-checkbox-component {
+    @apply ist-checkbox;
+  }
+
+  /* Legacy Side Menu Classes (DEPRECATED - use ist-side-menu instead) */
+  .side-menu-item-content {
+    @apply ist-side-menu__item;
+  }
+
+  /* Legacy Force Include Class (DEPRECATED - use ist-utilities-force instead) */
+  .ist-force-include {
+    @apply ist-utilities-force;
+  }
+} 

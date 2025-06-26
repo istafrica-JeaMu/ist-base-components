@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from '@storybook/vue3';
+import { default as BaseCheckbox } from './BaseCheckbox.vue';
+declare const meta: Meta<typeof BaseCheckbox>;
+export default meta;
+type Story = StoryObj<typeof BaseCheckbox>;
+export declare const Default: Story;
+export declare const Checked: Story;
+export declare const Disabled: Story;
+export declare const DisabledChecked: Story;
+export declare const WithoutLabel: Story;
+export declare const Variants: Story;
+export declare const Sizes: Story;
