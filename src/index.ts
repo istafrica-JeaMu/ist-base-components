@@ -106,8 +106,9 @@ export type {
 } from './components/BaseBreadcrumbs.vue'
 
 export type {
-  MenuItem,
-  BaseSideMenuProps
+  BaseSideMenuProps,
+  BaseSideMenuEmits,
+  BaseSideMenuSlots
 } from './components/BaseSideMenu.vue'
 
 export type {
@@ -153,11 +154,7 @@ export type {
   BaseDataTableSlots
 } from './components/BaseDataTable.vue'
 
-export type {
-  SideMenuItemProps,
-  SideMenuItemEmits,
-  SideMenuItemSlots
-} from './components/SideMenuItem.vue'
+// SideMenuItem types removed - now using PrimeVue PanelMenu
 
 export type {
   BaseMessageProps
