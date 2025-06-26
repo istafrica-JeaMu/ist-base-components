@@ -23,6 +23,12 @@ node_modules/
 *.sln
 *.sw?
 
+# Cursor IDE files
+.cursor/
+.cursorrules.backup
+.cursorrules.new
+.cursorrules.old
+
 # Environment variables
 .env
 .env.local
@@ -30,19 +36,19 @@ node_modules/
 .env.test.local
 .env.production.local
 
-# Build outputs
+# Build outputs - CRITICAL: Should be generated, not stored
 dist/
 dist-demo/
+build/
+lib/
 
 # TypeScript
 *.tsbuildinfo
 
-# Test outputs
+# Test outputs - Should be generated during CI/CD
 test-results/
 playwright-report/
-
-# Coverage directory used by tools like istanbul
-coverage
+coverage/
 *.lcov
 
 # nyc test coverage
@@ -85,7 +91,17 @@ jspm_packages/
 # Storybook build outputs
 .out
 .storybook-out
+storybook-static/
 
 # Temporary folders
 tmp/
-temp/ 
+temp/
+
+# OS generated files
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db 
