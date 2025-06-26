@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node.js dependencies - CRITICAL: Should never be committed
+node_modules/
+
 *.local
 
 # Editor directories and files
@@ -28,10 +31,15 @@ lerna-debug.log*
 .env.production.local
 
 # Build outputs
+dist/
 dist-demo/
 
 # TypeScript
 *.tsbuildinfo
+
+# Test outputs
+test-results/
+playwright-report/
 
 # Coverage directory used by tools like istanbul
 coverage
@@ -73,6 +81,7 @@ jspm_packages/
 
 # Nuxt.js build / generate output
 .nuxt
+
 # Storybook build outputs
 .out
 .storybook-out
